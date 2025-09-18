@@ -1,0 +1,94 @@
+- chunk_data: |
+    This Provider Participation Agreement ("Agreement") is entered into as of  (the
+    "Effective Date"), by and between a health insurance company organized under
+    the laws of the State of , with its principal place of business at [Insert Address]
+    ("TrustInsure" or "Payer"), and , a licensed provider of healthcare services
+    with its principal place of business at  ("Provider" or "HealthFirst").
+  prompt: |
+    From the Input given below, extract the following information:
+    Insurance Company name
+    Healthcare Provider name
+    Date of the agreement
+    Return this information in a JSON format:
+    {
+    "insurer": Insurance company name,
+    "provider": Healthcare provider name,
+    "date": date in ISO Format
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Input:
+
+- chunk_data: |
+    Claims must be submitted within days of the date of service unless otherwise agreed.
+    agreed.
+  prompt: |
+    From the Input given below, extract the following information:
+    Extract the claim submission SLA in days.
+    Return this information in a JSON format:
+    {
+    "claim-submission-sla-days": Number of Days
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: Claims must be submitted within 7 days of the date of service unless otherwise agreed.
+    Example Output: {"claim-submission-sla-days": 7}
+    Input:
+
+- chunk_data: |
+    shall process and remit payment for clean claims within SLA days of receipt.
+  prompt: |
+    From the Input given below, extract the following information:
+    Extract the claim processing SLA in days.
+    Return this information in a JSON format:
+    {
+    "claim-processing-sla-days": Number of Days
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: shall process and remit payment for clean claims within thirty (30) days of receipt.
+    Example Output: {"claim-remit-sla-days": 30}
+    Input:
+
+- chunk_data: |
+    In cases of overpayment, reserves the right to recover funds within 180 days from the date of payment.
+  prompt: |
+    From the Input given below, extract the following information:
+    Extract the over claim recovery SLA in days.
+    Return this information in a JSON format:
+    {
+    "claim-recovery-sla-days": Number of Days
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: In cases of overpayment, BestInsureCompany reserves the right to recover funds within 180 days from the date of payment.
+    Example output: {"claim-recovery-sla-days": 180}
+    Input:
+- chunk_data: |
+    Medical records must be retained for at least 
+  prompt: |
+    From the Input given below, extract the following information:
+    Exatract the record retention SLA in years.
+    Return this information in a JSON format:
+    {
+    "record-retention-sla-years": Number of Years
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+    Example output: {"record-retention-sla-years": 10}
+    Input:
+- chunk_data: |
+    Provider shall notify within business days of any breach, subpoena, or investigation.
+  prompt: |
+    From the Input given below, extract the following information:
+    Exatract the legal notification SLA in days.
+    Return this information in a JSON format:
+    {
+    "legal-notification-sla-days": Number of Days
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: Provider shall notify SuperInsureCompany within five (5) business days of any breach, subpoena, or investigation.
+    Example output: {"legal-notification-sla-days": 5}
+    Input:

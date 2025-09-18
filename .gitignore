@@ -1,0 +1,21 @@
+#ignore the pycache files
+__pycache__/
+
+#ignore the venv files
+venv/
+
+#ignore chroma db files
+db/
+
+#standard MAC files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*.log
+*.tmp
+*.bak
+*.aux
+*.out
+*.toc
