@@ -23,7 +23,7 @@
     Claims must be submitted within days of the date of service unless otherwise agreed.
     agreed.
   prompt: |
-    From the Input given below, extract the following information:
+    From the Input given below:
     Extract the claim submission SLA in days.
     Return this information in a JSON format:
     {
@@ -38,7 +38,7 @@
 - chunk_data: |
     shall process and remit payment for clean claims within SLA days of receipt.
   prompt: |
-    From the Input given below, extract the following information:
+    From the Input given below:
     Extract the claim processing SLA in days.
     Return this information in a JSON format:
     {
@@ -53,7 +53,7 @@
 - chunk_data: |
     In cases of overpayment, reserves the right to recover funds within 180 days from the date of payment.
   prompt: |
-    From the Input given below, extract the following information:
+    From the Input given below:
     Extract the over claim recovery SLA in days.
     Return this information in a JSON format:
     {
@@ -64,11 +64,12 @@
     Example Input: In cases of overpayment, BestInsureCompany reserves the right to recover funds within 180 days from the date of payment.
     Example output: {"claim-recovery-sla-days": 180}
     Input:
+
 - chunk_data: |
     Medical records must be retained for at least 
   prompt: |
-    From the Input given below, extract the following information:
-    Exatract the record retention SLA in years.
+    From the Input given below:
+    Extract the record retention SLA in years.
     Return this information in a JSON format:
     {
     "record-retention-sla-years": Number of Years
@@ -78,6 +79,7 @@
     Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
     Example output: {"record-retention-sla-years": 10}
     Input:
+
 - chunk_data: |
     Provider shall notify within business days of any breach, subpoena, or investigation.
   prompt: |
@@ -92,3 +94,80 @@
     Example Input: Provider shall notify SuperInsureCompany within five (5) business days of any breach, subpoena, or investigation.
     Example output: {"legal-notification-sla-days": 5}
     Input:
+
+- chunk_data: |
+    shall provide notice of approval or denial within  hours for urgent care requests and within days for routine requests.
+  prompt: |
+    From the Input given below:
+    Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+    Return this information in a JSON format:
+    {
+    "prior-authorization-urgent-sla-hours": Number of Hours,
+    "prior-authorization-routine-sla-days": Number of Days
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+    Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+    Input:
+
+- chunk_data: |
+    This Agreement shall commence on , and continue for an initial term of years. Thereafter, it shall automatically renew for successive year terms unless terminated as follows:
+    Without cause: Either party may terminate with  days prior written notice.
+    For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+    Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to days.
+    Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to ninety (90) days.
+  prompt: |
+    Input:
+    From the Input given below, extract the following information:
+    Agreement initial term in years
+    Agreement auto renewal term in years
+    Agreement termination notice in days
+    Agreement continuity of care period in days
+    Return this information in a JSON format:
+    {
+    "agreement-initial-term-years": Number of Years,
+    "agreement-auto-renewal-term-years": Number of Years,
+    "agreement-termination-notice-days": Number of Days,
+    "agreement-continuity-of-care-period-days": Number of Days
+    }
+    If you cannot extract this information, return a blank valid JSON.
+    NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+    Example Input: This Agreement shall commence on January 1, 2023, and continue for an initial term of 2 years. Thereafter, it shall automatically renew for successive 1 year terms unless terminated as follows:
+    Without cause: Either party may terminate with 60 days prior written notice.
+    For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+    Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to 90 days.
+    Example Output: {"agreement-initial-term-years": 2, "agreement-auto-renewal-term-years": 1, "agreement-termination-notice-days": 60, "agreement-continuity-of-care-period-days": 90}
+    Input:
+
+- chunk_data: |
+    Provider Participation Agreement
+  parsing_strategy: "section"
+
+- chunk_data: |
+    COMPENSATION AND BILLING
+  parsing_strategy: "paragraph"
+
+- chunk_data: |
+    UTILIZATION MANAGEMENT
+  parsing_strategy: "paragraph"
+
+- chunk_data: |
+    QUALITY ASSURANCE AND COMPLIANCE
+  parsing_strategy: "paragraph"
+
+- chunk_data: |
+    TERM AND TERMINATION
+  parsing_strategy: "section"
+
+- chunk_data: |
+    Appendix : Covered Services – CPT/HCPCS Codes
+  parsing_strategy: "table"
+
+- chunk_data: |
+    Appendix : Fee Schedule – Reimbursement Rates (USD)
+  parsing_strategy: "table"
+
+- chunk_data: |
+    Signature Page
+  parsing_strategy: "section"
