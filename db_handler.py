@@ -143,3 +143,52 @@ class DBHandler:
         except Exception:
             pass
         return False
+
+    def query(self, query_text: str, model: str, top_k: int = 5):
+        """Run a vector search for `query_text` against the Chroma collection for `model`.
+
+        This implementation assumes the documented API: get the collection by name
+        and call `collection.query(query_embeddings=[embedding], n_results=top_k)`.
+        Returns a list of hits with keys: collection, id, document, metadata, distance (if available).
+        """
+        if self.client is None:
+            raise RuntimeError("Chroma client is not initialized")
+
+        q_embedding = self.generate_embedding(model, query_text)
+
+        collection_name = self._sanitize_collection_name(model)
+        col = self.client.get_collection(name=collection_name)
+
+        # Request all useful return fields in one call per docs: documents, metadatas,
+        # embeddings and distances.
+        res = col.query(
+            query_embeddings=[q_embedding],
+            n_results=top_k,
+            include=["embeddings", "distances", "documents", "metadatas"],
+        )
+
+        hits = []
+        all_ids = res.get('ids', []) if isinstance(res, dict) else []
+        all_docs = res.get('documents', []) if isinstance(res, dict) else []
+        all_metadatas = res.get('metadatas', []) if isinstance(res, dict) else []
+        all_distances = res.get('distances', []) if isinstance(res, dict) else []
+        all_embeddings = res.get('embeddings', []) if isinstance(res, dict) else []
+        ids = all_ids[0] if all_ids else []
+        docs = all_docs[0] if all_docs else []
+        metadatas = all_metadatas[0] if all_metadatas else []
+        distances = all_distances[0] if all_distances else []
+        embeddings = all_embeddings[0] if all_embeddings else []
+
+        for i, doc_id in enumerate(ids):
+            hit = {
+                'collection': collection_name,
+                'id': doc_id,
+                'document': docs[i] if i < len(docs) else None,
+                'metadata': metadatas[i] if i < len(metadatas) else {},
+                'distance': distances[i] if i < len(distances) else None,
+                'embedding': embeddings[i] if i < len(embeddings) else None,
+            }
+            hits.append(hit)
+
+        print(f"Returning {len(hits)} hits from query.")
+        return hits
