@@ -2,6 +2,7 @@ import hashlib
 import sys
 import openai
 import chromadb
+import logging
 
 try:
     from chromadb.config import Settings
@@ -13,6 +14,11 @@ class DBHandler:
     """Encapsulate Chroma client and embedding/storage helpers."""
 
     def __init__(self, persist_directory: str = "db"):
+        # instance logger
+        self.logger = logging.getLogger(self.__class__.__name__)
+        if not self.logger.handlers:
+            self.logger.setLevel(logging.INFO)
+
         self.client = None
         # Try a few initialization strategies to support multiple chromadb versions
         try:
@@ -35,7 +41,7 @@ class DBHandler:
         try:
             self.client = chromadb.Client()
         except Exception as e:
-            print(f"[ERROR] Failed to initialize Chroma client: {e}")
+            self.logger.error(f"Failed to initialize Chroma client: {e}")
             sys.exit(1)
 
     @staticmethod
@@ -47,7 +53,7 @@ class DBHandler:
             response = openai.embeddings.create(model=model, input=text)
             return response.data[0].embedding
         except Exception as e:
-            print(f"[ERROR] Failed to generate embedding for chunk: {e}")
+            self.logger.error(f"Failed to generate embedding for chunk: {e}")
             raise
 
     @staticmethod
@@ -70,19 +76,23 @@ class DBHandler:
             existing = {"ids": []}
 
         if existing and existing.get("ids"):
-            print(f"[SKIP] Model '{model}' already has an embedding for this chunk.")
+            self.logger.info(f"[SKIP] Model '{model}' already has an embedding for this chunk.")
             return
 
         if embedding is None:
             col.add(ids=[chunk_id], documents=[chunk_data], metadatas=[{"prompt": prompt}])
         else:
             col.add(ids=[chunk_id], documents=[chunk_data], metadatas=[{"prompt": prompt}], embeddings=[embedding])
-
-        print(f"[INSERT] Stored chunk in Chroma collection '{collection_name}' with id: {chunk_id}")
+        # Log insertion
+        try:
+            self.logger.info(f"[INSERT] Stored chunk in Chroma collection '{collection_name}' with id: {chunk_id}")
+        except Exception:
+            # Ensure logging failure doesn't break storage flow
+            pass
 
     def list_entries(self):
         if self.client is None:
-            print("[ERROR] Chroma client is not initialized.")
+            self.logger.error("Chroma client is not initialized.")
             return
 
         collections = []
@@ -133,7 +143,7 @@ class DBHandler:
             for i, doc_id in enumerate(ids):
                 snippet = (docs[i][:200] + '...') if i < len(docs) and docs[i] and len(docs[i]) > 200 else (docs[i] if i < len(docs) else '')
                 metadata = metadatas[i] if i < len(metadatas) else {}
-                print(f"Collection: {name} | id: {doc_id} | metadata: {metadata} | snippet: {snippet}")
+                self.logger.info(f"Collection: {name} | id: {doc_id} | metadata: {metadata} | snippet: {snippet}")
 
     def persist(self):
         try:
@@ -189,6 +199,9 @@ class DBHandler:
                 'embedding': embeddings[i] if i < len(embeddings) else None,
             }
             hits.append(hit)
+        try:
+            self.logger.info(f"Returning {len(hits)} hits from query.")
+        except Exception:
+            pass
 
-        print(f"Returning {len(hits)} hits from query.")
         return hits

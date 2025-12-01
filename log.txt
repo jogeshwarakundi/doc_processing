@@ -1,0 +1,1761 @@
+2025-09-30 10:11:54,290 INFO chromadb.telemetry.product.posthog: Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+2025-09-30 10:11:56,970 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:11:57,006 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:11:57,006 INFO ExtractionAgent: Processing section 'Provider Participation Agreement' with strategy: section
+2025-09-30 10:11:57,006 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:11:57,007 INFO ExtractionAgent: ProcessText: Inside: This Provider Participation Agreement ("Agreement") is entered into as of August 4, 2025 (the "Effective Date"), by and between TrustInsure, Inc., a health insurance company organized under the laws of the State of Massachusetts, with its principal place of business at [Insert Address] ("TrustInsure" or "Payer"), and HealthFirst Healthcare, a licensed provider of healthcare services with its principal place of business at [Insert Address] ("Provider" or "HealthFirst").
+WHEREAS, TrustInsure operates managed healthcare benefit plans ("Plans") and desires to arrange for the provision of healthcare services to individuals enrolled in its Plans ("Members"); and
+WHEREAS, Provider desires to provide such healthcare services to Members under the terms and conditions set forth herein;
+NOW, THEREFORE, in consideration of the mutual promises and covenants contained herein, the parties agree as follows:
+2025-09-30 10:11:58,036 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:11:58,044 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:11:58,044 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+This Provider Participation Agreement ("Agreement") is entered into as of August 4, 2025 (the "Effective Date"), by and between TrustInsure, Inc., a health insurance company organized under the laws of the State of Massachusetts, with its principal place of business at [Insert Address] ("TrustInsure" or "Payer"), and HealthFirst Healthcare, a licensed provider of healthcare services with its principal place of business at [Insert Address] ("Provider" or "HealthFirst").
+WHEREAS, TrustInsure operates managed healthcare benefit plans ("Plans") and desires to arrange for the provision of healthcare services to individuals enrolled in its Plans ("Members"); and
+WHEREAS, Provider desires to provide such healthcare services to Members under the terms and conditions set forth herein;
+NOW, THEREFORE, in consideration of the mutual promises and covenants contained herein, the parties agree as follows:
+2025-09-30 10:12:02,842 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:12:02,907 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"insurer":"TrustInsure, Inc.","provider":"HealthFirst Healthcare","date":"2025-08-04"}
+2025-09-30 10:12:02,907 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:04,143 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:04,149 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:04,149 INFO ExtractionAgent: Processing section '1. DEFINITIONS' with strategy: section
+2025-09-30 10:12:04,149 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:04,149 INFO ExtractionAgent: ProcessText: Inside: Covered Services: Healthcare services reimbursable under this Agreement that are medically necessary and provided to Members.
+Member: An individual enrolled in a TrustInsure health plan entitled to receive Covered Services.
+Clean Claim: A complete, legible, and accurate claim that contains all required data elements and complies with industry standards.
+Fee Schedule: A list of CPT/HCPCS codes with associated reimbursement amounts agreed upon in this Agreement.
+Medical Necessity: Health services that are clinically appropriate, evidence-based, and not primarily for the convenience of the patient or provider.
+Emergency Services: Healthcare services for a medical condition manifesting acute symptoms of sufficient severity that the absence of immediate medical attention could result in serious jeopardy.
+Primary Care Services: Services provided by general practitioners, internists, pediatricians, or family practitioners acting as a Member’s primary point of entry into the healthcare system.
+Utilization Management: Processes to evaluate the medical necessity, appropriateness, and efficiency of the use of healthcare services, procedures, and facilities.
+Credentialing: Verification of licensure, education, training, experience, and competence prior to participation in the TrustInsure network.
+2025-09-30 10:12:05,213 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:05,216 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:05,216 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+table
+Covered Services: Healthcare services reimbursable under this Agreement that are medically necessary and provided to Members.
+Member: An individual enrolled in a TrustInsure health plan entitled to receive Covered Services.
+Clean Claim: A complete, legible, and accurate claim that contains all required data elements and complies with industry standards.
+Fee Schedule: A list of CPT/HCPCS codes with associated reimbursement amounts agreed upon in this Agreement.
+Medical Necessity: Health services that are clinically appropriate, evidence-based, and not primarily for the convenience of the patient or provider.
+Emergency Services: Healthcare services for a medical condition manifesting acute symptoms of sufficient severity that the absence of immediate medical attention could result in serious jeopardy.
+Primary Care Services: Services provided by general practitioners, internists, pediatricians, or family practitioners acting as a Member’s primary point of entry into the healthcare system.
+Utilization Management: Processes to evaluate the medical necessity, appropriateness, and efficiency of the use of healthcare services, procedures, and facilities.
+Credentialing: Verification of licensure, education, training, experience, and competence prior to participation in the TrustInsure network.
+2025-09-30 10:12:14,348 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:12:14,350 INFO ExtractionAgent: ProcessText: Return: LLM response
+| Term | Definition |
+|---|---|
+| Covered Services | Healthcare services reimbursable under this Agreement that are medically necessary and provided to Members. |
+| Member | An individual enrolled in a TrustInsure health plan entitled to receive Covered Services. |
+| Clean Claim | A complete, legible, and accurate claim that contains all required data elements and complies with industry standards. |
+| Fee Schedule | A list of CPT/HCPCS codes with associated reimbursement amounts agreed upon in this Agreement. |
+| Medical Necessity | Health services that are clinically appropriate, evidence-based, and not primarily for the convenience of the patient or provider. |
+| Emergency Services | Healthcare services for a medical condition manifesting acute symptoms of sufficient severity that the absence of immediate medical attention could result in serious jeopardy. |
+| Primary Care Services | Services provided by general practitioners, internists, pediatricians, or family practitioners acting as a Member’s primary point of entry into the healthcare system. |
+| Utilization Management | Processes to evaluate the medical necessity, appropriateness, and efficiency of the use of healthcare services, procedures, and facilities. |
+| Credentialing | Verification of licensure, education, training, experience, and competence prior to participation in the TrustInsure network. |
+2025-09-30 10:12:14,350 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:14,664 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:14,668 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:14,669 INFO ExtractionAgent: Processing section '2. SCOPE OF SERVICES' with strategy: paragraph
+2025-09-30 10:12:14,669 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:14,669 INFO ExtractionAgent: ProcessText: Inside: Primary care and preventive health services
+2025-09-30 10:12:14,854 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:14,858 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:14,858 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+table
+Primary care and preventive health services
+2025-09-30 10:12:39,096 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:12:39,099 INFO ExtractionAgent: ProcessText: Return: LLM response
+Here’s a concise reference table of common primary care and preventive health services. Frequency and specific tests depend on age, sex, medical history, and local guidelines — ask your clinician for a personalized plan.
+
+| Service | Description | Typical providers | Target population / frequency (general) | Notes / examples |
+|---|---:|---|---|---|
+| Annual wellness / routine physical exam | Comprehensive visit to review health, meds, vitals, preventive plan | PCP (MD/DO), NP, PA | Adults — yearly or as recommended | Opportunity to update vaccines, screenings, med review |
+| Immunizations | Routine and seasonal vaccines to prevent infectious disease | PCP, nurse, pharmacist | All ages — childhood schedule; adults: influenza annually, Tdap once/booster, HPV through young adulthood, pneumococcal/shingles by age/risk | Follow CDC/local immunization schedules |
+| Blood pressure screening | Measurement and follow-up of hypertension | PCP, nurse, pharmacist | Adults — at least every visit; more often if elevated | Home BP monitoring for diagnosis/management |
+| Lipid (cholesterol) screening & CV risk assessment | Measure cholesterol, calculate ASCVD risk, guide prevention | PCP, NP, PA | Adults — baseline in early adulthood; repeat every 4–6 years or sooner if risk factors | Guides statin initiation and lifestyle counseling |
+| Diabetes screening (glucose, HbA1c) | Detect prediabetes/diabetes | PCP, NP, PA | Adults 35–70 (or earlier with risk factors) — repeat per results | Fasting glucose, A1c, or 2-hr OGTT as indicated |
+| Cancer screening — breast | Mammography to detect breast cancer | PCP, OB/GYN, radiology | Women 40–74: individualized/ guideline-based (often every 1–2 years) | Shared decision-making for age 40–49 |
+| Cancer screening — cervical | Pap smear ± HPV testing for cervical precancer detection | PCP, OB/GYN | Women 21–65 per guideline intervals (e.g., Pap every 3 yrs, Pap+HPV every 5 yrs) | HPV vaccination reduces risk |
+| Cancer screening — colorectal | Colonoscopy, FIT, or sigmoidoscopy to detect polyps/cancer | PCP, gastroenterology | Adults 45–75 (earlier if risk factors) — interval depends on test | Various accepted screening options |
+| Obesity screening & nutrition/exercise counseling | BMI, waist, lifestyle counseling, referral to programs | PCP, dietitian, behavioral health | All ages — annually or as needed | May include weight-loss meds or bariatric referral |
+| Tobacco, alcohol, substance-use screening & cessation | Screening (e.g., AUDIT, brief intervention), treatment/referral | PCP, behavioral health, addiction specialists | All adults — at least yearly; more often in high-risk | Pharmacotherapy and counseling available |
+| Mental health screening | Screen for depression, anxiety, suicidality; brief interventions | PCP, behavioral health, psychiatry | All ages — periodic (e.g., PHQ-9 for adults) | Integrate treatment/referral as needed |
+| Reproductive health — contraception & preconception | Counseling, prescribing contraception, pre-pregnancy risk reduction | PCP, OB/GYN, family planning clinics | Reproductive-age persons as desired | STI screening included when indicated |
+| Prenatal care | Early and ongoing care for pregnancy, screening and risk management | OB/GYN, family medicine, midwives | Pregnant persons — first trimester onward | Includes genetic screening, ultrasounds, immunizations (e.g., Tdap) |
+| STI screening & HIV prevention | Testing, counseling, PrEP consideration, partner services | PCP, sexual health clinics | Sexually active individuals per risk (e.g., annual chlamydia/gonorrhea for sexually active women <25) | Tailor to sexual practices and exposures |
+| Bone health — osteoporosis screening | DEXA scan, fracture risk assessment | PCP, endocrinology | Women ≥65, men ≥70, or earlier with risk factors | Calcium/vitamin D counseling; pharmacotherapy if indicated |
+| Geriatric preventive care (falls, cognition, meds) | Fall-risk assessment, vaccination review, polypharmacy, cognitive screening | PCP, geriatrician | Older adults — annually or with functional change | Home-safety evaluation, advance-care planning |
+
+If you want, I can:
+- Create a version organized by age group (pediatric, adolescent, adult, older adult).
+- Produce a checklist for one specific visit (e.g., annual adult checkup).
+- Add guideline references (USPSTF, CDC, WHO) or local schedule details.
+2025-09-30 10:12:39,100 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:39,100 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:39,100 INFO ExtractionAgent: ProcessText: Inside: Management of chronic conditions and patient education
+2025-09-30 10:12:39,919 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:39,924 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:39,924 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+paragraph
+Management of chronic conditions and patient education
+2025-09-30 10:12:45,500 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:12:45,503 INFO ExtractionAgent: ProcessText: Return: LLM response
+Effective management of chronic conditions relies on a patient-centered approach that combines evidence-based medical treatment with ongoing education and self-management support. Educating patients about their diagnosis, medication regimen, symptom monitoring, lifestyle modifications (diet, exercise, sleep), and when to seek care empowers them to make informed decisions and improves adherence. Tailoring education to the individual’s health literacy, cultural background, and readiness to change—using teach-back, written materials, and digital tools—enhances understanding and retention. Regular follow-up, care coordination among multidisciplinary teams, and use of remote monitoring or telehealth help detect problems early and adjust treatment plans. By setting realistic goals, reinforcing positive behaviors, and connecting patients with community resources and support groups, clinicians can reduce complications, hospitalizations, and improve quality of life for people living with chronic illness.
+2025-09-30 10:12:45,503 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:45,503 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:45,503 INFO ExtractionAgent: ProcessText: Inside: Urgent care and minor procedures performed in the office setting
+2025-09-30 10:12:45,811 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:45,815 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:45,815 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+Return this information in a JSON format:
+{
+"prior-authorization-urgent-sla-hours": Number of Hours,
+"prior-authorization-routine-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+Input:
+
+Urgent care and minor procedures performed in the office setting
+2025-09-30 10:12:49,406 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:12:49,409 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:12:49,409 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:49,409 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:49,409 INFO ExtractionAgent: ProcessText: Inside: In-house diagnostic testing (blood work, urine analysis, cultures)
+2025-09-30 10:12:50,207 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:50,210 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:50,210 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+Return this information in a JSON format:
+{
+"prior-authorization-urgent-sla-hours": Number of Hours,
+"prior-authorization-routine-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+Input:
+
+In-house diagnostic testing (blood work, urine analysis, cultures)
+2025-09-30 10:12:53,857 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:12:53,858 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:12:53,859 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:53,859 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:12:53,859 INFO ExtractionAgent: ProcessText: Inside: Radiographic imaging (chest, extremities, abdominal X-rays)
+2025-09-30 10:12:54,183 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:12:54,188 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:12:54,188 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+table
+Radiographic imaging (chest, extremities, abdominal X-rays)
+2025-09-30 10:13:15,409 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:13:15,412 INFO ExtractionAgent: ProcessText: Return: LLM response
+Here is a concise reference table for common radiographic imaging (chest, extremities, abdominal X‑rays). Doses are approximate and will vary by equipment and protocol.
+
+| Exam | Common indications | Typical views | Patient positioning / technique tips | Key findings seen on radiograph | Limitations / when to escalate |
+|---|---:|---|---|---|---|
+| Chest X‑ray | Cough, dyspnea, chest pain, suspected infection, trauma, line/tube placement, monitoring cardiopulmonary status | PA and lateral (standard); AP (portable/bedbound); AP upright for suspected effusion or if PA not possible | PA upright with full inspiration; lateral to localize pathology; AP supine/semirecumbent for critically ill | Consolidation (pneumonia), pulmonary edema, pleural effusion, pneumothorax, cardiomegaly, lines/tubes | Limited sensitivity for small lesions, early pulmonary embolism, mediastinal detail—consider CT chest, ultrasound for pleural fluid |
+| Extremity X‑ray (upper/lower limbs) | Trauma (fracture/dislocation), persistent localized pain, pre/post‑op, osteomyelitis, degenerative joint disease, foreign body | At least two orthogonal views (AP and lateral); oblique views as indicated; special views for joints | Position to include joint above & below when fracture suspected; reduce overlap and use true orthogonal views | Fractures, dislocations, subluxation, deformity, joint space narrowing, periosteal reaction, some foreign bodies (radiopaque) | Poor for cartilage/ligament/tendon injuries—consider CT for complex fractures, MRI for soft tissue/occult fractures |
+| Abdominal X‑ray (AXR/KUB) | Acute abdominal pain, suspected bowel obstruction, perforation (upright/left decubitus), constipation, radiopaque foreign bodies | Supine (KUB) + upright AP chest/abdomen or upright abdominal; left lateral decubitus for suspected free intraperitoneal air if upright not possible | Supine for baseline gas pattern; upright or decubitus to demonstrate free air and air‑fluid levels; ensure expiratory/inspiratory appropriate to view | Bowel obstruction (dilated loops, air‑fluid levels), free intraperitoneal air (upright/decubitus), large renal/ureteric calculi (if radiopaque), extensive fecal loading | Low sensitivity for many causes of acute abdomen (e.g., early ischemia, small perforations, non‑radiopaque stones)—CT abdomen/pelvis often required |
+
+Approximate effective doses (adult):
+- PA chest: ~0.02 mSv; AP portable/supine higher (~0.05–0.2 mSv depending on technique)
+- Extremity: very low, ~0.001–0.01 mSv per view
+- Abdominal (single supine AP KUB): ~0.2–0.8 mSv; upright series similar or slightly higher
+
+Important precautions:
+- Minimize radiation in pregnancy—use ultrasound or MRI when feasible; if X‑ray required, shield and limit field.
+- Always obtain at least two orthogonal views for suspected fracture.
+- Correlate radiograph findings with clinical exam; escalate to CT/MRI/ultrasound when radiograph is insufficient.
+
+If you want, I can:
+- Produce a printable/CSV version of this table.
+- Add pediatric dose ranges and pediatric technique notes.
+2025-09-30 10:13:15,412 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:13:15,412 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:13:15,412 INFO ExtractionAgent: ProcessText: Inside: Immunizations and vaccines as per CDC guidelines
+2025-09-30 10:13:16,219 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:13:16,225 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:13:16,225 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+table
+Immunizations and vaccines as per CDC guidelines
+2025-09-30 10:13:58,553 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:13:58,557 INFO ExtractionAgent: ProcessText: Return: LLM response
+Below is a concise reference table summarizing routine immunizations per CDC/ACIP guidance (children, adolescents, adults, pregnancy, and special populations). This is a summary — always confirm current, patient-specific recommendations on the CDC immunization schedules (child/adolescent, adult, and pregnancy) and with the patient’s clinician.
+
+Columns: Vaccine | Primary target(s) | Routine schedule (key points) | Catch-up / special indications | Contraindications / precautions / notes
+
+- Hepatitis B (HepB)
+  - Infants, children, unvaccinated adults at risk
+  - Routine: 3-dose series — birth, 1–2 months, 6–18 months
+  - Catch-up: 3-dose or 2-dose adult schedules depending on product; indicated for high-risk adults, occupational exposure
+  - Contraindications: severe allergic reaction to prior dose or vaccine component
+
+- Rotavirus (RV)
+  - Infants
+  - Routine: oral vaccine — RV5 (3 doses) or RV1 (2 doses); start before 15 weeks; final dose by 8 months
+  - Catch-up: not initiated after 15 weeks; doses must meet min intervals
+  - Contraindications: history of intussusception, severe combined immunodeficiency (SCID)
+
+- Diphtheria-Tetanus-Pertussis (DTaP) / Tdap / Td
+  - Infants/children/adolescents/adults
+  - Routine: DTaP at 2,4,6, 15–18 months, 4–6 years; Tdap once at 11–12 years (or for pregnant persons each pregnancy 27–36 wks), then Td or Tdap booster every 10 years as indicated
+  - Catch-up: Complete 5-dose series for children; Tdap for unvaccinated adults
+  - Contraindications: severe allergic reaction; encephalopathy within 7 days of prior pertussis-containing vaccine
+
+- Haemophilus influenzae type b (Hib)
+  - Infants and some high-risk older children
+  - Routine: 3–4 dose series starting at 2 months (depending on product)
+  - Catch-up: Varies by age; not routinely recommended for most adults, except certain asplenic or immunocompromised persons
+  - Contraindications: severe allergic reaction to prior dose
+
+- Pneumococcal conjugate (PCV13/15/20) and polysaccharide (PPSV23)
+  - Children (PCV) and adults at risk
+  - Routine (children): PCV series at 2,4,6 months and 12–15 months
+  - Routine (adults): Pneumococcal vaccination indicated for adults ≥65 and younger adults with certain conditions — current practice uses PCV15 or PCV20 strategies followed by PPSV23 in some cases per age/condition
+  - Catch-up: Individualized for immunocompromised, asplenia, chronic conditions
+  - Contraindications: severe allergic reaction to vaccine component
+
+- Inactivated Poliovirus (IPV)
+  - Infants/children, travelers to polio-affected areas
+  - Routine: 4 doses at 2,4, 6–18 months, and 4–6 years
+  - Catch-up: Complete series as indicated for unvaccinated persons
+  - Contraindications: severe allergic reaction
+
+- Influenza (IIV/LAIV)
+  - All persons ≥6 months annually
+  - Routine: Annual vaccination (IIV injectible preferred for many groups; LAIV intranasal is an option for some healthy nonpregnant persons 2–49 years)
+  - Special indications: high-risk groups (pregnancy, chronic disease, healthcare workers)
+  - Contraindications: severe allergic reaction to prior dose or component; LAIV contraindicated in pregnancy, immunocompromised, some chronic conditions; egg allergy is not a contraindication for modern flu vaccines
+
+- Measles-Mumps-Rubella (MMR)
+  - Children, susceptible adults
+  - Routine: 2 doses — 12–15 months and 4–6 years (or 4 weeks apart for adults/healthcare workers/travelers)
+  - Catch-up: 2-dose series for unvaccinated adults without evidence of immunity; post-exposure use in some settings
+  - Contraindications: pregnancy, severe immunosuppression, severe allergy to vaccine component
+
+- Varicella (chickenpox)
+  - Children and susceptible adults
+  - Routine: 2 doses — 12–15 months and 4–6 years; 2 doses for susceptible adults (4 weeks apart)
+  - Catch-up: as above; immunocompromised exceptions (use with caution)
+  - Contraindications: pregnancy, severe immunosuppression, severe allergy to vaccine components
+
+- Hepatitis A (HepA)
+  - Children, certain at-risk adults, travelers
+  - Routine: 2-dose series (6–18 months after first) recommended for all children aged 12–23 months; older children/adults at risk should be vaccinated
+  - Catch-up: Complete 2-dose series for unvaccinated persons
+  - Contraindications: severe allergic reaction
+
+- Human Papillomavirus (HPV)
+  - Preteens/adolescents and catch-up to mid-20s/26; shared decision-making for some older adults
+  - Routine: 2-dose series (0, 6–12 months) if started before 15 years; 3-dose series if started at 15+; recommended at 11–12 years (can start at 9)
+  - Catch-up: up to age 26 routinely; 27–45 years shared decision-making for some
+  - Contraindications: severe allergic reaction to prior dose/component; not for pregnant persons (defer until after pregnancy)
+
+- Meningococcal conjugate (MenACWY) and serogroup B (MenB)
+  - Adolescents, certain high-risk groups (asplenia, complement deficiency), travelers, outbreak control
+  - Routine (MenACWY): 2-dose series at 11–12 years and a booster at 16 years
+  - MenB: recommended for certain high-risk persons and may be used in adolescents/young adults 16–23 years (shared decision-making)
+  - Catch-up: as recommended for high-risk or outbreak situations
+  - Contraindications: severe allergic reaction
+
+- COVID-19 (SARS-CoV-2) vaccines
+  - All eligible persons per current guidance
+  - Routine: primary series and recommended boosters per current ACIP guidance (product-specific; bivalent formulations used for updated boosters)
+  - Special groups: older adults, immunocompromised, pregnant persons have specific booster recommendations
+  - Contraindications: severe allergic reaction to prior dose or components (e.g., PEG/polysorbate depending on product)
+
+- Herpes zoster (Shingles) — Recombinant zoster vaccine (RZV, e.g., Shingrix)
+  - Adults ≥50 years routine; adults ≥19 with immunocompromising conditions often recommended
+  - Routine: 2 doses, 2–6 months apart
+  - Catch-up: vaccinate unvaccinated older adults; immunocompromised persons recommended earlier
+  - Contraindications: severe allergic reaction; not a live vaccine (safe in many immunocompromised except where specifically contraindicated)
+
+- Respiratory syncytial virus (RSV) vaccines/monoclonal antibodies (recent guidance)
+  - Older adults and certain pregnant persons/newborn protection (ACIP/CDC guidance evolving)
+  - Routine: recommendations introduced for adults ≥60 and for maternal immunization in some pregnancies to protect infants — follow current ACIP statements
+  - Catch-up: product- and indication-specific
+  - Contraindications: product-specific; consult latest CDC guidance
+
+General safety notes / special populations:
+- Live vaccines (MMR, varicella, LAIV) are generally contraindicated in pregnancy and in severely immunocompromised persons. Inactivated/recombinant vaccines are generally preferred for these groups when indicated.
+- Pregnant persons: influenza (inactivated) and Tdap each pregnancy (27–36 weeks) are routinely recommended. Other vaccines may be recommended depending on risk (e.g., COVID-19, HepB if at risk).
+- Asplenia, complement deficiencies, cochlear implants, and certain chronic conditions change pneumococcal, meningococcal, and Hib recommendations — follow condition-specific CDC guidance.
+- For all vaccine decisions, check: CDC’s Child & Adolescent Immunization Schedule, Adult Immunization Schedule, and Pregnancy Immunization guidance — and consult the patient’s clinician for individualized care.
+
+References / where to verify:
+- CDC Immunization Schedules (child/adolescent, adult, pregnancy) and ACIP recommendations at cdc.gov/vaccines
+
+If you want, I can:
+- Generate a printable child/adolescent or adult schedule table,
+- Provide a simplified checklist by age group (infant, toddler, school-age, adolescent, adult, older adult, pregnancy),
+- Or produce citations/links to specific ACIP recommendations. Which would you prefer?
+2025-09-30 10:13:58,557 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:13:58,557 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:13:58,557 INFO ExtractionAgent: ProcessText: Inside: Referral coordination to specialists as needed
+2025-09-30 10:14:01,587 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:01,591 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:01,592 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+Return this information in a JSON format:
+{
+"prior-authorization-urgent-sla-hours": Number of Hours,
+"prior-authorization-routine-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+Input:
+
+Referral coordination to specialists as needed
+2025-09-30 10:14:04,304 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:04,308 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:04,308 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:04,308 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:04,308 INFO ExtractionAgent: ProcessText: Inside: Electronic medical record (EMR) documentation compliant with CMS and HIPAA standards
+2025-09-30 10:14:05,172 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:05,176 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:05,176 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the record retention SLA in years.
+Return this information in a JSON format:
+{
+"record-retention-sla-years": Number of Years
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+Example output: {"record-retention-sla-years": 10}
+Input:
+
+Electronic medical record (EMR) documentation compliant with CMS and HIPAA standards
+2025-09-30 10:14:08,209 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:08,211 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:08,211 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:09,186 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:09,191 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:09,191 INFO ExtractionAgent: Processing section '3. PROVIDER OBLIGATIONS' with strategy: paragraph
+2025-09-30 10:14:09,191 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:09,191 INFO ExtractionAgent: ProcessText: Inside: Maintain valid licensure and certification in the State of Massachusetts.
+2025-09-30 10:14:10,055 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:10,060 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:10,060 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+Input:
+From the Input given below, extract the following information:
+Agreement initial term in years
+Agreement auto renewal term in years
+Agreement termination notice in days
+Agreement continuity of care period in days
+Return this information in a JSON format:
+{
+"agreement-initial-term-years": Number of Years,
+"agreement-auto-renewal-term-years": Number of Years,
+"agreement-termination-notice-days": Number of Days,
+"agreement-continuity-of-care-period-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: This Agreement shall commence on January 1, 2023, and continue for an initial term of 2 years. Thereafter, it shall automatically renew for successive 1 year terms unless terminated as follows:
+Without cause: Either party may terminate with 60 days prior written notice.
+For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to 90 days.
+Example Output: {"agreement-initial-term-years": 2, "agreement-auto-renewal-term-years": 1, "agreement-termination-notice-days": 60, "agreement-continuity-of-care-period-days": 90}
+Input:
+
+Maintain valid licensure and certification in the State of Massachusetts.
+2025-09-30 10:14:13,854 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:13,856 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:13,856 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:13,856 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:13,857 INFO ExtractionAgent: ProcessText: Inside: Participate in TrustInsure’s credentialing and re-credentialing programs.
+2025-09-30 10:14:14,068 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:14,071 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:14,072 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Participate in TrustInsure’s credentialing and re-credentialing programs.
+2025-09-30 10:14:20,957 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:20,959 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:20,959 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:20,959 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:20,959 INFO ExtractionAgent: ProcessText: Inside: Provide access to Members in accordance with TrustInsure’s access standards (e.g., urgent visits within 24 hours).
+2025-09-30 10:14:21,219 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:21,222 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:21,222 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+Return this information in a JSON format:
+{
+"prior-authorization-urgent-sla-hours": Number of Hours,
+"prior-authorization-routine-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+Input:
+
+Provide access to Members in accordance with TrustInsure’s access standards (e.g., urgent visits within 24 hours).
+2025-09-30 10:14:25,902 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:25,904 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:25,904 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:25,904 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:25,904 INFO ExtractionAgent: ProcessText: Inside: Maintain accurate and confidential medical records per HIPAA and 42 CFR Part 2 requirements.
+2025-09-30 10:14:26,229 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:26,233 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:26,233 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the record retention SLA in years.
+Return this information in a JSON format:
+{
+"record-retention-sla-years": Number of Years
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+Example output: {"record-retention-sla-years": 10}
+Input:
+
+Maintain accurate and confidential medical records per HIPAA and 42 CFR Part 2 requirements.
+2025-09-30 10:14:29,594 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:29,596 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:29,597 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:29,597 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:29,597 INFO ExtractionAgent: ProcessText: Inside: Comply with TrustInsure’s policies regarding clinical quality, utilization management, and patient satisfaction.
+2025-09-30 10:14:30,245 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:30,251 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:30,251 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Comply with TrustInsure’s policies regarding clinical quality, utilization management, and patient satisfaction.
+2025-09-30 10:14:40,666 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:40,668 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:40,668 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:40,668 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:40,668 INFO ExtractionAgent: ProcessText: Inside: Cooperate with TrustInsure during audits, grievance resolution, and peer review processes.
+2025-09-30 10:14:41,208 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:41,215 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:41,215 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Cooperate with TrustInsure during audits, grievance resolution, and peer review processes.
+2025-09-30 10:14:45,984 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:45,986 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"insurer":"TrustInsure","provider":"","date":""}
+2025-09-30 10:14:45,986 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:45,986 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:45,986 INFO ExtractionAgent: ProcessText: Inside: Immediately notify TrustInsure of any material change in licensure, staff privileges, or legal investigations.
+2025-09-30 10:14:46,745 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:46,750 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:46,751 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Exatract the legal notification SLA in days.
+Return this information in a JSON format:
+{
+"legal-notification-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Provider shall notify SuperInsureCompany within five (5) business days of any breach, subpoena, or investigation.
+Example output: {"legal-notification-sla-days": 5}
+Input:
+
+Immediately notify TrustInsure of any material change in licensure, staff privileges, or legal investigations.
+2025-09-30 10:14:50,001 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:50,003 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:14:50,003 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:50,235 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:50,238 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:50,239 INFO ExtractionAgent: Processing section '4. COMPENSATION AND BILLING' with strategy: paragraph
+2025-09-30 10:14:50,239 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:50,239 INFO ExtractionAgent: ProcessText: Inside: Provider shall be reimbursed per the Fee Schedule (Appendix B) for Covered Services rendered to Members.
+2025-09-30 10:14:50,500 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:50,508 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:50,508 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+table
+Provider shall be reimbursed per the Fee Schedule (Appendix B) for Covered Services rendered to Members.
+2025-09-30 10:14:57,274 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:14:57,276 INFO ExtractionAgent: ProcessText: Return: LLM response
+Here are three simple table formats showing the sentence content. Tell me which format you prefer or what columns/fields you want added.
+
+Markdown table
+| Party    | Payment Basis         | Reference      | Scope            |
+|----------|-----------------------|----------------|------------------|
+| Provider | Reimbursed per Fee Schedule | Appendix B     | Covered Services rendered to Members |
+
+Plain-text (ASCII) table
++----------+---------------------------+-----------+-----------------------------------------+
+| Party    | Payment Basis             | Reference | Scope                                   |
++----------+---------------------------+-----------+-----------------------------------------+
+| Provider | Reimbursed per Fee Schedule | Appendix B | Covered Services rendered to Members     |
++----------+---------------------------+-----------+-----------------------------------------+
+
+CSV
+Party,Payment Basis,Reference,Scope
+Provider,"Reimbursed per Fee Schedule",Appendix B,"Covered Services rendered to Members"
+
+Would you like different column names, additional details (rates, effective date), or this exported to a specific file format?
+2025-09-30 10:14:57,276 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:57,276 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:14:57,276 INFO ExtractionAgent: ProcessText: Inside: Provider shall submit claims electronically in accordance with HIPAA standard formats (837P/837I).
+2025-09-30 10:14:57,598 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:14:57,602 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:14:57,602 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the claim processing SLA in days.
+Return this information in a JSON format:
+{
+"claim-processing-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall process and remit payment for clean claims within thirty (30) days of receipt.
+Example Output: {"claim-remit-sla-days": 30}
+Input:
+
+Provider shall submit claims electronically in accordance with HIPAA standard formats (837P/837I).
+2025-09-30 10:15:03,117 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:03,119 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:03,119 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:03,119 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:03,119 INFO ExtractionAgent: ProcessText: Inside: Claims must be submitted within ninety (90) days of the date of service unless otherwise agreed.
+2025-09-30 10:15:03,295 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:03,299 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:03,299 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the claim submission SLA in days.
+Return this information in a JSON format:
+{
+"claim-submission-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Claims must be submitted within 7 days of the date of service unless otherwise agreed.
+Example Output: {"claim-submission-sla-days": 7}
+Input:
+
+Claims must be submitted within ninety (90) days of the date of service unless otherwise agreed.
+2025-09-30 10:15:05,957 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:05,958 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"claim-submission-sla-days": 90}
+2025-09-30 10:15:05,959 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:05,959 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:05,959 INFO ExtractionAgent: ProcessText: Inside: TrustInsure shall process and remit payment for clean claims within thirty (30) days of receipt.
+2025-09-30 10:15:06,609 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:06,615 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:06,615 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the claim processing SLA in days.
+Return this information in a JSON format:
+{
+"claim-processing-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall process and remit payment for clean claims within thirty (30) days of receipt.
+Example Output: {"claim-remit-sla-days": 30}
+Input:
+
+TrustInsure shall process and remit payment for clean claims within thirty (30) days of receipt.
+2025-09-30 10:15:10,733 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:10,736 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"claim-processing-sla-days": 30}
+2025-09-30 10:15:10,736 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:10,736 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:10,736 INFO ExtractionAgent: ProcessText: Inside: Provider shall not bill Members beyond applicable cost-sharing amounts (copays, deductibles).
+2025-09-30 10:15:11,059 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:11,063 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:11,063 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+Input:
+From the Input given below, extract the following information:
+Agreement initial term in years
+Agreement auto renewal term in years
+Agreement termination notice in days
+Agreement continuity of care period in days
+Return this information in a JSON format:
+{
+"agreement-initial-term-years": Number of Years,
+"agreement-auto-renewal-term-years": Number of Years,
+"agreement-termination-notice-days": Number of Days,
+"agreement-continuity-of-care-period-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: This Agreement shall commence on January 1, 2023, and continue for an initial term of 2 years. Thereafter, it shall automatically renew for successive 1 year terms unless terminated as follows:
+Without cause: Either party may terminate with 60 days prior written notice.
+For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to 90 days.
+Example Output: {"agreement-initial-term-years": 2, "agreement-auto-renewal-term-years": 1, "agreement-termination-notice-days": 60, "agreement-continuity-of-care-period-days": 90}
+Input:
+
+Provider shall not bill Members beyond applicable cost-sharing amounts (copays, deductibles).
+2025-09-30 10:15:14,206 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:14,208 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:14,209 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:14,209 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:14,209 INFO ExtractionAgent: ProcessText: Inside: Coordination of Benefits (COB) must be followed when Members have secondary insurance coverage.
+2025-09-30 10:15:14,532 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:14,536 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:14,536 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+paragraph
+Coordination of Benefits (COB) must be followed when Members have secondary insurance coverage.
+2025-09-30 10:15:20,022 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:20,024 INFO ExtractionAgent: ProcessText: Return: LLM response
+Coordination of Benefits (COB) ensures that when a Member has more than one health insurance policy, the plans work together to determine the correct payment responsibility so benefits are not duplicated. The primary insurer pays first according to its terms; the secondary insurer may then consider the remaining eligible charges up to its plan limits after receiving the Explanation of Benefits (EOB) from the primary carrier. Members and providers must disclose other coverage at the time of service and submit claims to the primary payer first, complying with each plan’s timely‑filing requirements and documentation rules. Following COB prevents overpayments, reduces balance billing to Members, and helps ensure claims are processed accurately; contact member services or the plan’s COB unit for questions or to report additional coverage.
+2025-09-30 10:15:20,024 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:20,024 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:20,024 INFO ExtractionAgent: ProcessText: Inside: TrustInsure reserves the right to audit, adjust, or deny claims that do not meet documentation or medical necessity requirements.
+2025-09-30 10:15:20,370 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:20,375 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:20,375 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the over claim recovery SLA in days.
+Return this information in a JSON format:
+{
+"claim-recovery-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: In cases of overpayment, BestInsureCompany reserves the right to recover funds within 180 days from the date of payment.
+Example output: {"claim-recovery-sla-days": 180}
+Input:
+
+TrustInsure reserves the right to audit, adjust, or deny claims that do not meet documentation or medical necessity requirements.
+2025-09-30 10:15:23,634 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:23,636 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:23,636 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:24,844 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:24,849 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:24,849 INFO ExtractionAgent: Processing section '5. UTILIZATION MANAGEMENT' with strategy: paragraph
+2025-09-30 10:15:24,849 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:24,850 INFO ExtractionAgent: ProcessText: Inside: Provider shall comply with all prior authorization requirements as published by TrustInsure.
+2025-09-30 10:15:25,060 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:25,062 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:25,063 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Provider shall comply with all prior authorization requirements as published by TrustInsure.
+2025-09-30 10:15:30,052 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:30,053 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:30,054 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:30,054 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:30,054 INFO ExtractionAgent: ProcessText: Inside: Emergency services shall not require prior authorization.
+2025-09-30 10:15:30,380 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:30,383 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:30,383 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+Return this information in a JSON format:
+{
+"prior-authorization-urgent-sla-hours": Number of Hours,
+"prior-authorization-routine-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+Input:
+
+Emergency services shall not require prior authorization.
+2025-09-30 10:15:33,960 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:33,962 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:33,962 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:33,962 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:33,962 INFO ExtractionAgent: ProcessText: Inside: TrustInsure shall provide notice of approval or denial within 72 hours for urgent care requests and within 14 days for routine requests.
+2025-09-30 10:15:34,396 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:34,401 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:34,401 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the prior authorization urgent care SLA in hours and routine care SLA in days.
+Return this information in a JSON format:
+{
+"prior-authorization-urgent-sla-hours": Number of Hours,
+"prior-authorization-routine-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: shall provide notice of approval or denial within 24 hours for urgent care requests and within 3 days for routine requests.
+Example output: {"prior-authorization-urgent-sla-hours": 24, "prior-authorization-routine-sla-days": 3}
+Input:
+
+TrustInsure shall provide notice of approval or denial within 72 hours for urgent care requests and within 14 days for routine requests.
+2025-09-30 10:15:37,543 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:37,546 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"prior-authorization-urgent-sla-hours":72,"prior-authorization-routine-sla-days":14}
+2025-09-30 10:15:37,546 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:37,546 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:37,547 INFO ExtractionAgent: ProcessText: Inside: Provider may appeal adverse determinations through TrustInsure’s utilization review appeal process.
+2025-09-30 10:15:38,086 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:38,091 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:38,091 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Provider may appeal adverse determinations through TrustInsure’s utilization review appeal process.
+2025-09-30 10:15:45,793 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:45,794 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"insurer":"TrustInsure","provider":"","date":""}
+2025-09-30 10:15:45,794 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:46,120 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:46,124 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:46,124 INFO ExtractionAgent: Processing section '6. QUALITY ASSURANCE AND COMPLIANCE' with strategy: paragraph
+2025-09-30 10:15:46,124 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:46,124 INFO ExtractionAgent: ProcessText: Inside: Provider agrees to participate in TrustInsure’s quality improvement initiatives and performance benchmarking programs.
+2025-09-30 10:15:46,445 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:46,449 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:46,450 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Provider agrees to participate in TrustInsure’s quality improvement initiatives and performance benchmarking programs.
+2025-09-30 10:15:51,980 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:51,982 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:51,982 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:51,982 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:51,982 INFO ExtractionAgent: ProcessText: Inside: Medical records are subject to periodic review to ensure compliance with quality standards.
+2025-09-30 10:15:52,224 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:52,229 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:52,229 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the record retention SLA in years.
+Return this information in a JSON format:
+{
+"record-retention-sla-years": Number of Years
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+Example output: {"record-retention-sla-years": 10}
+Input:
+
+Medical records are subject to periodic review to ensure compliance with quality standards.
+2025-09-30 10:15:55,130 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:55,133 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:55,133 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:55,133 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:55,133 INFO ExtractionAgent: ProcessText: Inside: Provider must cooperate with corrective action plans if deficiencies are identified.
+2025-09-30 10:15:55,333 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:55,337 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:55,337 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Exatract the legal notification SLA in days.
+Return this information in a JSON format:
+{
+"legal-notification-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Provider shall notify SuperInsureCompany within five (5) business days of any breach, subpoena, or investigation.
+Example output: {"legal-notification-sla-days": 5}
+Input:
+
+Provider must cooperate with corrective action plans if deficiencies are identified.
+2025-09-30 10:15:58,167 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:15:58,170 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:15:58,170 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:58,170 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:15:58,170 INFO ExtractionAgent: ProcessText: Inside: Provider shall comply with all applicable federal and state laws including HIPAA, HITECH, and ACA mandates.
+2025-09-30 10:15:58,493 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:15:58,497 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:15:58,498 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Exatract the legal notification SLA in days.
+Return this information in a JSON format:
+{
+"legal-notification-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Provider shall notify SuperInsureCompany within five (5) business days of any breach, subpoena, or investigation.
+Example output: {"legal-notification-sla-days": 5}
+Input:
+
+Provider shall comply with all applicable federal and state laws including HIPAA, HITECH, and ACA mandates.
+2025-09-30 10:16:01,642 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:01,645 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:16:01,645 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:01,645 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:01,645 INFO ExtractionAgent: ProcessText: Inside: Record retention shall be no less than ten (10) years or as required by applicable law.
+2025-09-30 10:16:01,966 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:01,970 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:01,970 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the record retention SLA in years.
+Return this information in a JSON format:
+{
+"record-retention-sla-years": Number of Years
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+Example output: {"record-retention-sla-years": 10}
+Input:
+
+Record retention shall be no less than ten (10) years or as required by applicable law.
+2025-09-30 10:16:03,922 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:03,924 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"record-retention-sla-years": 10}
+2025-09-30 10:16:03,924 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:04,097 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:04,104 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:04,104 INFO ExtractionAgent: Processing section '7. TERM AND TERMINATION' with strategy: section
+2025-09-30 10:16:04,105 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:04,105 INFO ExtractionAgent: ProcessText: Inside: This Agreement shall commence on August 4, 2025, and continue for an initial term of three (3) years. Thereafter, it shall automatically renew for successive one (1) year terms unless terminated as follows:
+Without cause: Either party may terminate with ninety (90) days prior written notice.
+For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to ninety (90) days.
+2025-09-30 10:16:04,463 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:04,467 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:04,467 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+Input:
+From the Input given below, extract the following information:
+Agreement initial term in years
+Agreement auto renewal term in years
+Agreement termination notice in days
+Agreement continuity of care period in days
+Return this information in a JSON format:
+{
+"agreement-initial-term-years": Number of Years,
+"agreement-auto-renewal-term-years": Number of Years,
+"agreement-termination-notice-days": Number of Days,
+"agreement-continuity-of-care-period-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: This Agreement shall commence on January 1, 2023, and continue for an initial term of 2 years. Thereafter, it shall automatically renew for successive 1 year terms unless terminated as follows:
+Without cause: Either party may terminate with 60 days prior written notice.
+For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to 90 days.
+Example Output: {"agreement-initial-term-years": 2, "agreement-auto-renewal-term-years": 1, "agreement-termination-notice-days": 60, "agreement-continuity-of-care-period-days": 90}
+Input:
+
+This Agreement shall commence on August 4, 2025, and continue for an initial term of three (3) years. Thereafter, it shall automatically renew for successive one (1) year terms unless terminated as follows:
+Without cause: Either party may terminate with ninety (90) days prior written notice.
+For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to ninety (90) days.
+2025-09-30 10:16:08,480 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:08,481 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"agreement-initial-term-years": 3, "agreement-auto-renewal-term-years": 1, "agreement-termination-notice-days": 90, "agreement-continuity-of-care-period-days": 90}
+2025-09-30 10:16:08,481 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:08,914 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:08,917 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:08,917 INFO ExtractionAgent: Processing section 'Appendix A: Covered Services – CPT/HCPCS Codes' with strategy: table
+2025-09-30 10:16:08,917 INFO ExtractionAgent: Processing tables for section 'Appendix A: Covered Services – CPT/HCPCS Codes'
+2025-09-30 10:16:09,239 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:09,245 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:09,245 INFO ExtractionAgent: Processing section 'Appendix B: Fee Schedule – Reimbursement Rates (USD)' with strategy: table
+2025-09-30 10:16:09,245 INFO ExtractionAgent: Processing tables for section 'Appendix B: Fee Schedule – Reimbursement Rates (USD)'
+2025-09-30 10:16:09,461 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:09,464 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:09,464 INFO ExtractionAgent: Processing section 'Signature Page' with strategy: section
+2025-09-30 10:16:09,464 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:09,465 INFO ExtractionAgent: ProcessText: Inside: IN WITNESS WHEREOF, the parties hereto have executed this Provider Participation Agreement as of the Effective Date.
+2025-09-30 10:16:09,782 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:09,785 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:09,785 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+IN WITNESS WHEREOF, the parties hereto have executed this Provider Participation Agreement as of the Effective Date.
+2025-09-30 10:16:13,581 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:13,584 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"insurer":"","provider":"","date":""}
+2025-09-30 10:16:13,584 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:14,015 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:14,019 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:14,019 INFO ExtractionAgent: Processing section 'Appendix C: Medicare and Medicaid Requirements' with strategy: table
+2025-09-30 10:16:14,019 INFO ExtractionAgent: Processing tables for section 'Appendix C: Medicare and Medicaid Requirements'
+2025-09-30 10:16:14,019 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:14,019 INFO ExtractionAgent: ProcessText: Inside: If Provider furnishes services to Members enrolled in Medicare Advantage or Medicaid Managed Care plans administered by TrustInsure, Provider agrees to comply with all applicable federal and state laws and regulations, including but not limited to:
+2025-09-30 10:16:14,187 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:14,192 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:14,192 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+If Provider furnishes services to Members enrolled in Medicare Advantage or Medicaid Managed Care plans administered by TrustInsure, Provider agrees to comply with all applicable federal and state laws and regulations, including but not limited to:
+2025-09-30 10:16:19,550 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:19,552 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:16:19,553 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:19,553 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:19,553 INFO ExtractionAgent: ProcessText: Inside: Compliance with Title XVIII and Title XIX of the Social Security Act, including Sections 1128, 1156, and 1877.
+2025-09-30 10:16:20,094 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:20,098 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:20,098 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+paragraph
+Compliance with Title XVIII and Title XIX of the Social Security Act, including Sections 1128, 1156, and 1877.
+2025-09-30 10:16:37,018 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:37,021 INFO ExtractionAgent: ProcessText: Return: LLM response
+We commit to full compliance with Title XVIII (Medicare) and Title XIX (Medicaid) of the Social Security Act, including, where applicable, the provisions contained in sections 1128, 1156, and 1877. To effectuate that commitment we maintain written policies and procedures and ongoing training to ensure accurate coding and billing, prompt identification and repayment of overpayments, proper documentation of medical necessity, routine screening of employees, contractors and providers against federal exclusion lists, disclosure of reportable ownership and adverse actions, prohibition of improper inducements, and adherence to physician self‑referral requirements. We also conduct regular internal audits and monitoring, require corrective action and discipline for violations, and cooperate fully with government audits, investigations and reporting obligations to protect program integrity.
+2025-09-30 10:16:37,021 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:37,021 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:37,021 INFO ExtractionAgent: ProcessText: Inside: Access to records by CMS, HHS, OIG, and applicable state Medicaid agencies for audit and oversight purposes.
+2025-09-30 10:16:37,308 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:37,313 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:37,314 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the record retention SLA in years.
+Return this information in a JSON format:
+{
+"record-retention-sla-years": Number of Years
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+Example output: {"record-retention-sla-years": 10}
+Input:
+
+Access to records by CMS, HHS, OIG, and applicable state Medicaid agencies for audit and oversight purposes.
+2025-09-30 10:16:40,392 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:40,394 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:16:40,394 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:40,394 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:40,395 INFO ExtractionAgent: ProcessText: Inside: Retention of records for a minimum of ten (10) years or longer if required by law.
+2025-09-30 10:16:40,718 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:40,723 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:40,723 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below:
+Extract the record retention SLA in years.
+Return this information in a JSON format:
+{
+"record-retention-sla-years": Number of Years
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Medical records must be retained for at least ten (10) years or as otherwise required by law.
+Example output: {"record-retention-sla-years": 10}
+Input:
+
+Retention of records for a minimum of ten (10) years or longer if required by law.
+2025-09-30 10:16:42,888 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:42,890 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"record-retention-sla-years": 10}
+2025-09-30 10:16:42,890 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:42,890 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:42,890 INFO ExtractionAgent: ProcessText: Inside: Timely submission of encounter data and participation in risk adjustment validation audits.
+2025-09-30 10:16:43,130 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:43,133 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:43,133 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+paragraph
+Timely submission of encounter data and participation in risk adjustment validation audits.
+2025-09-30 10:16:50,288 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:16:50,290 INFO ExtractionAgent: ProcessText: Return: LLM response
+Timely submission of encounter data and active participation in risk adjustment validation audits are essential to ensure accurate member risk scores, appropriate payment reconciliation, and regulatory compliance. Prompt, complete, and high-quality data reduces the likelihood of payment errors or recoupments, supports fair provider reimbursement, and improves population health management by reflecting true patient acuity. Engaging in validation audits demonstrates transparency and helps identify gaps in documentation or coding practices so they can be corrected proactively. To achieve these benefits, organizations should maintain robust data governance, standardized workflows for encounter capture and submission, staff training, and secure, auditable recordkeeping to support both routine reporting and ad hoc audit requests.
+2025-09-30 10:16:50,290 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:50,290 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:16:50,290 INFO ExtractionAgent: ProcessText: Inside: Adherence to Medicaid and Medicare beneficiary protections including nondiscrimination, grievance resolution, and prior authorization timelines.
+2025-09-30 10:16:50,813 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:16:50,818 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:16:50,818 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+section
+Adherence to Medicaid and Medicare beneficiary protections including nondiscrimination, grievance resolution, and prior authorization timelines.
+2025-09-30 10:17:25,332 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:17:25,334 INFO ExtractionAgent: ProcessText: Return: LLM response
+Section: Adherence to Medicaid and Medicare Beneficiary Protections
+
+Purpose
+- Ensure compliance with all applicable federal and state Medicaid and Medicare beneficiary protections, including nondiscrimination, timely grievance resolution, and prior authorization (PA) timelines.
+- Protect beneficiaries’ rights to equal access to care, fair and timely decisions, clear notice, and opportunities for appeal and external review.
+
+Scope
+- Applies to the health plan, contracted providers, delegated entities, and staff involved in beneficiary enrollment, utilization management, claims processing, grievances/appeals, and member communications for Medicare and Medicaid beneficiaries.
+
+Definitions
+- Beneficiary: an individual enrolled in a Medicaid or Medicare program served by the plan.
+- Grievance: any expression of dissatisfaction about the plan or services other than an adverse determination.
+- Adverse determination (denial): a decision by the plan to deny, reduce, suspend or terminate a requested service or payment.
+- Prior authorization (PA): pre-service approval required by the plan to provide a service or medication.
+
+Policy
+1. Nondiscrimination and Access
+- The plan shall not discriminate against beneficiaries on the basis of race, color, national origin, sex (including gender identity), age, disability, religion, sexual orientation, or source of payment.
+- The plan shall comply with Section 1557 of the Affordable Care Act, Title VI of the Civil Rights Act, the Americans with Disabilities Act, and other applicable federal and state nondiscrimination laws.
+- The plan will provide language assistance (oral interpretation and written translation) to Limited English Proficiency (LEP) beneficiaries and auxiliary aids and services for beneficiaries with disabilities in a timely manner at no cost.
+- Access standards (network adequacy, timely appointments, provider capacity) must be maintained as required by applicable law and contract.
+
+2. Grievance and Appeal Rights and Process
+- The plan shall maintain an accessible, culturally appropriate grievance and appeal process that includes:
+  - Multiple submission channels (telephone, mail, secure email/portal, in-person).
+  - Assistance for completing forms and filing grievances without retaliation.
+  - Clear, plain-language notices to beneficiaries describing their rights and how to appeal.
+- Timeliness:
+  - Acknowledge receipt of grievances/appeals promptly (e.g., within 2 business days).
+  - Resolve standard grievances within a maximum of 30 calendar days unless statute/regulation requires a different timeframe.
+  - Resolve expedited grievances/appeals as soon as possible, but no later than 72 hours when a beneficiary’s health or life is at risk, or per applicable program rules.
+- Notice content for adverse determinations and grievance resolutions must include:
+  - The decision and clinical rationale (if applicable).
+  - Reference to the specific policies, criteria, or evidence used.
+  - Information about the right to appeal and request expedited review.
+  - Instructions and deadlines for filing an appeal or requesting external review.
+  - Contact information for member services, state Medicaid fair hearing or external review entity, and civil rights complaint offices.
+- External Review and State Hearings:
+  - Follow applicable federal and state requirements for independent external review and state fair hearings, including timelines and referral procedures.
+
+3. Prior Authorization Timelines and Transparency
+- The plan will make PA decisions in accordance with applicable federal and state requirements and contract terms. Standard expectations include:
+  - Standard PA decisions: within 14 calendar days of receipt of all necessary information (or within the time required by applicable law/regulation).
+  - Expedited/urgent PA decisions: within 72 hours when delay could seriously jeopardize the beneficiary’s health or ability to maintain life, health, or safety.
+- If additional information is needed to make a decision, the plan must:
+  - Promptly request the information, allow the beneficiary/provider a reasonable time to respond, and hold the clock only as permitted by law.
+  - Provide clear instructions on what information is required.
+- PA criteria and decision-making processes shall be:
+  - Based on clinical evidence and objective medical necessity criteria.
+  - Published and easily accessible to providers and beneficiaries.
+  - Applied consistently and without discrimination.
+
+4. Notices and Documentation
+- All adverse benefit determinations, PA denials, and grievance/appeal decisions must be provided in writing in plain language and in alternative formats/languages upon request.
+- Notices must include appeal rights, deadlines, and instructions for requesting expedited review and external review.
+- The plan will maintain complete documentation of all PA requests, grievance/appeal filings, decisions, notices, clinical reviews, and communications for the period required by law.
+
+Responsibilities
+- Plan leadership: ensure policies, resources, and oversight to meet beneficiary protection requirements.
+- Member services: provide timely information, language assistance, and file acknowledgements.
+- Utilization management: adjudicate PA requests per timelines and document clinical rationale.
+- Grievance/appeals unit: process, investigate, adjudicate, and escalate grievances/appeals; monitor timeliness and quality.
+- Compliance/legal: track regulatory changes, ensure policy alignment, and report to regulators as required.
+- Contracted providers/delegates: comply with plan policies, timelines, nondiscrimination, and reporting requirements; permit audits.
+
+Monitoring, Quality Assurance, and Reporting
+- Conduct regular audits and monitoring to ensure compliance with nondiscrimination policies, grievance and PA timelines, and notice quality.
+- Track metrics (e.g., acknowledgement time, median and maximum resolution time for standard and expedited grievances and PA requests, number of adverse determinations overturned on appeal, language assistance usage).
+- Report required metrics and incidents to regulators and leadership as required; implement corrective action plans for identified deficiencies.
+
+Training
+- Provide initial and annual training for staff and contractors on nondiscrimination obligations, grievance/appeals procedures, PA policies and timelines, language access, cultural competency, and documentation requirements.
+
+Corrective Action and Enforcement
+- Investigate allegations of noncompliance or discrimination promptly.
+- Take corrective actions including retraining, process remediation, provider sanctions, or reporting to regulatory authorities as appropriate.
+
+References
+- Applicable federal and state Medicaid/Medicare statutes, regulations, and program guidance (e.g., Medicare Advantage and Medicaid managed care rules), civil rights laws (Section 1557, ADA, Title VI), and CMS guidance on grievances, appeals, and utilization management.
+
+Notes
+- Specific timeframes and procedural details should be adapted to and superseded by any applicable state rules, Medicare Advantage contract terms, or other binding legal requirements.
+2025-09-30 10:17:25,335 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:25,765 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:17:25,772 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:17:25,773 INFO ExtractionAgent: Processing section 'Appendix D: Telehealth Services' with strategy: table
+2025-09-30 10:17:25,773 INFO ExtractionAgent: Processing tables for section 'Appendix D: Telehealth Services'
+2025-09-30 10:17:25,773 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:25,773 INFO ExtractionAgent: ProcessText: Inside: Provider may furnish Covered Services to Members using synchronous or asynchronous telehealth modalities, including video and telephone consultations, subject to the following requirements:
+2025-09-30 10:17:26,090 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:17:26,095 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:17:26,095 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+Input:
+From the Input given below, extract the following information:
+Agreement initial term in years
+Agreement auto renewal term in years
+Agreement termination notice in days
+Agreement continuity of care period in days
+Return this information in a JSON format:
+{
+"agreement-initial-term-years": Number of Years,
+"agreement-auto-renewal-term-years": Number of Years,
+"agreement-termination-notice-days": Number of Days,
+"agreement-continuity-of-care-period-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: This Agreement shall commence on January 1, 2023, and continue for an initial term of 2 years. Thereafter, it shall automatically renew for successive 1 year terms unless terminated as follows:
+Without cause: Either party may terminate with 60 days prior written notice.
+For cause: Immediate termination upon material breach, fraud, insolvency, or loss of licensure.
+Upon termination, Provider shall cooperate to ensure continuity of care for any Members under active treatment for a period of up to 90 days.
+Example Output: {"agreement-initial-term-years": 2, "agreement-auto-renewal-term-years": 1, "agreement-termination-notice-days": 60, "agreement-continuity-of-care-period-days": 90}
+Input:
+
+Provider may furnish Covered Services to Members using synchronous or asynchronous telehealth modalities, including video and telephone consultations, subject to the following requirements:
+2025-09-30 10:17:29,998 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:17:30,000 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:17:30,000 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:30,000 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:30,000 INFO ExtractionAgent: ProcessText: Inside: Provider must use HIPAA-compliant platforms unless otherwise waived under federal or state guidance.
+2025-09-30 10:17:30,233 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:17:30,238 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:17:30,239 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Exatract the legal notification SLA in days.
+Return this information in a JSON format:
+{
+"legal-notification-sla-days": Number of Days
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Example Input: Provider shall notify SuperInsureCompany within five (5) business days of any breach, subpoena, or investigation.
+Example output: {"legal-notification-sla-days": 5}
+Input:
+
+Provider must use HIPAA-compliant platforms unless otherwise waived under federal or state guidance.
+2025-09-30 10:17:34,122 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:17:34,124 INFO ExtractionAgent: ProcessText: Return: LLM response
+{}
+2025-09-30 10:17:34,124 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:34,124 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:34,124 INFO ExtractionAgent: ProcessText: Inside: Telehealth visits must be appropriately documented in the Member’s medical record, including modality used and patient consent.
+2025-09-30 10:17:34,449 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:17:34,456 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:17:34,457 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+section
+Telehealth visits must be appropriately documented in the Member’s medical record, including modality used and patient consent.
+2025-09-30 10:17:52,250 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:17:52,252 INFO ExtractionAgent: ProcessText: Return: LLM response
+Here is a concise policy-style section you can drop into a medical record / telehealth policy, plus a short consent script and a sample telehealth note template.
+
+Telehealth documentation requirements
+- Telehealth visits must be documented in the Member’s medical record with the same thoroughness as an in‑person visit and must include, at minimum:
+  - Date and start/end time of the encounter.
+  - Modality used (e.g., synchronous video, telephone, store‑and‑forward, remote patient monitoring). Include the platform or vendor name when applicable.
+  - Names and roles of all persons present (e.g., Member, caregiver, interpreter).
+  - Location of the Member and the clinician at time of encounter (city/state).
+  - Evidence of informed consent for telehealth (verbal or written), including date/time and who obtained consent.
+  - Clinical history, exam/observations possible via the modality, assessment, decision making, and care plan (including prescriptions, tests, referrals).
+  - Time spent on assessment and management (total and, if used for billing, face‑to‑face or non‑face‑to‑face time per payer rules).
+  - Any technical issues that affected the visit (quality, connection loss) and any clinical impact.
+  - Use of interpreter or assistive technology and documentation of language or communication accommodations.
+  - Safety or privacy considerations raised and actions taken (e.g., Member privacy concerns, emergency plan).
+  - Billing/CPT codes and place of service or modifier required by payer.
+  - Clinician name, role, and electronic or written signature with date/time.
+
+Consent script (example)
+- “I explained the telehealth visit, its benefits and limitations, and alternatives. The visit will be conducted via [platform], which may have privacy/security risks. The Member [or legal guardian] agrees to proceed with telehealth today and understands they can request an in‑person visit at any time. Consent obtained verbally on [date/time] by [clinician name].”
+
+Sample telehealth note template (brief)
+- Date/time: 
+- Modality/platform: 
+- Participant(s)/locations: 
+- Consent: (verbal/written) — obtained by: 
+- Chief complaint/HPI: 
+- Relevant history: 
+- Exam/observations (limited by modality): 
+- Assessment/diagnosis: 
+- Plan (tests, prescriptions, referrals, follow‑up): 
+- Time spent (total/medical decision making time): 
+- Technical issues: 
+- Interpreter/assistive tech: 
+- Clinician signature/name/title/date:
+
+Retention and compliance
+- Retain documentation per applicable record retention and payer requirements. Ensure documentation meets HIPAA and state telehealth regulations and payer billing rules.
+
+If you want, I can: 1) tailor the language to a specific payer/state, 2) create a printable one‑page checklist for clinicians, or 3) produce an EMR-friendly text block for copy/paste into encounter notes. Which would you prefer?
+2025-09-30 10:17:52,252 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:52,252 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:17:52,252 INFO ExtractionAgent: ProcessText: Inside: Reimbursement for telehealth shall be at parity with in-person visits when medically appropriate, subject to applicable coding and billing guidelines (e.g., CPT 99441-99443, 99212-99215 with -95 modifier).
+2025-09-30 10:17:53,226 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:17:53,231 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:17:53,231 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+table
+Reimbursement for telehealth shall be at parity with in-person visits when medically appropriate, subject to applicable coding and billing guidelines (e.g., CPT 99441-99443, 99212-99215 with -95 modifier).
+2025-09-30 10:18:03,973 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:18:03,974 INFO ExtractionAgent: ProcessText: Return: LLM response
+| Policy Item | Requirement / Practice | Example Codes / Modifiers | Notes |
+|---|---:|---|---|
+| Reimbursement parity | Telehealth reimbursed at parity with in‑person visits when medically appropriate | — | Applies only when clinically appropriate and allowed by payer policy |
+| Coding references | Reimburse subject to applicable coding & billing guidelines | CPT 99441–99443; CPT 99212–99215 with -95 modifier (example) | Confirm current CPT code set and payer-specific rules before billing |
+| Modifier use | Indicate telehealth delivery when required by payer | -95 modifier (example) | Some payers require different modifiers or place of service codes; follow payer guidance |
+| Billing guidance | Follow documentation, coding, and payer-specific requirements | — | Verify eligibility, coverage, and prior‑authorization as needed; update coding per latest guidance |
+
+If you want, I can format this for a specific reimbursement policy document or convert it to CSV/Excel.
+2025-09-30 10:18:03,975 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:03,975 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:03,975 INFO ExtractionAgent: ProcessText: Inside: Provider shall comply with TrustInsure's Telehealth Coverage Policy and applicable CMS guidance.
+2025-09-30 10:18:04,239 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:18:04,242 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:18:04,243 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+Provider shall comply with TrustInsure's Telehealth Coverage Policy and applicable CMS guidance.
+2025-09-30 10:18:12,221 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:18:12,224 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"insurer":"TrustInsure","provider":"","date":""}
+2025-09-30 10:18:12,225 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:12,764 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:18:12,768 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:18:12,768 INFO ExtractionAgent: Processing section 'Appendix E: Capitation and Alternative Payment Models (APMs)' with strategy: table
+2025-09-30 10:18:12,768 INFO ExtractionAgent: Processing tables for section 'Appendix E: Capitation and Alternative Payment Models (APMs)'
+2025-09-30 10:18:12,768 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:12,768 INFO ExtractionAgent: ProcessText: Inside: For select contracts, TrustInsure and Provider may mutually agree to implement a capitation arrangement or other alternative payment model (APM). Terms for such arrangements shall be documented in a separately executed amendment. Key principles include:
+2025-09-30 10:18:13,089 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:18:13,092 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:18:13,092 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+From the Input given below, extract the following information:
+Insurance Company name
+Healthcare Provider name
+Date of the agreement
+Return this information in a JSON format:
+{
+"insurer": Insurance company name,
+"provider": Healthcare provider name,
+"date": date in ISO Format
+}
+If you cannot extract this information, return a blank valid JSON.
+NOTE. Always respond with ONLY a valid JSON. Do not include any markdown code fences or extra text.
+Input:
+
+For select contracts, TrustInsure and Provider may mutually agree to implement a capitation arrangement or other alternative payment model (APM). Terms for such arrangements shall be documented in a separately executed amendment. Key principles include:
+2025-09-30 10:18:21,664 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:18:21,666 INFO ExtractionAgent: ProcessText: Return: LLM response
+{"insurer":"TrustInsure","provider":"Provider","date":null}
+2025-09-30 10:18:21,667 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:21,667 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:21,667 INFO ExtractionAgent: ProcessText: Inside: Monthly per-member-per-month (PMPM) payments for defined services in lieu of fee-for-service reimbursement.
+2025-09-30 10:18:21,914 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:18:21,922 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:18:21,923 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+section
+Monthly per-member-per-month (PMPM) payments for defined services in lieu of fee-for-service reimbursement.
+2025-09-30 10:18:47,935 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:18:47,938 INFO ExtractionAgent: ProcessText: Return: LLM response
+Section: Monthly Per‑Member‑Per‑Month (PMPM) Payments in Lieu of Fee‑For‑Service Reimbursement
+
+1. Purpose
+This Section describes the Parties’ agreement to compensate Provider by way of monthly per‑member‑per‑month (PMPM) payments for the provision of the Defined Services in lieu of fee‑for‑service reimbursement.
+
+2. Definitions
+- “PMPM Rate” means the agreed dollar amount per Member per month for the Defined Services, as set forth in Exhibit A (or other referenced schedule).  
+- “Defined Services” means the specific services covered by this PMPM arrangement and listed in Exhibit B.  
+- “Member” means an individual enrolled with the Payer and attributed to Provider under the attribution rules in Exhibit C.  
+- “Member Month” means one Member enrolled and attributed to Provider for any portion of a calendar month, unless otherwise specified.  
+- “Capitation Period” means the contract period or calendar year for which PMPM payments are calculated.  
+
+3. Payment Methodology
+- Payer shall pay Provider a PMPM payment for each Member for each Member Month that Member is attributed to Provider, subject to any withholds, adjustments, carve‑outs, exclusions, and reconciliations described herein.  
+- The PMPM payment is intended to cover all costs of furnishing the Defined Services unless an item or service is expressly carved out as Fee‑For‑Service (FFS) or otherwise excluded in Exhibit B.
+
+4. Calculation and Timing
+- Monthly Payment Calculation: Monthly Payment = (PMPM Rate) × (Number of Member Months in the month).  
+- Payer shall provide Provider with an invoice or remittance advice each month specifying the PMPM Rate, Member count, and total payment. Payments are due within 30 days of invoice date (or as otherwise agreed).  
+- Mid‑month enrollment changes: A Member who is enrolled for any portion of a month shall generally be counted as a full Member Month unless Exhibit C specifies pro‑rata treatment.
+
+5. Invoicing, Payment, and Reporting
+- Payer shall remit payments electronically to Provider’s designated account and include a detailed remittance report showing Member identifiers (as permitted by privacy laws), Member counts, PMPM rate, gross payment, withholds, prior period adjustments, and net payment.  
+- Provider shall timely submit any required billing information and reports necessary for reconciliation.
+
+6. Withholds, Incentives, and Risk Sharing
+- The Parties may agree to withhold a percentage of PMPM payments for quality, performance, or risk‑sharing purposes as detailed in Exhibit D. Withheld amounts shall be released or reconciled in accordance with the performance measurement and payment schedule in Exhibit D.  
+- Any upside/downside risk arrangements, shared savings, or shared losses are described in Exhibit D and are applied in addition to PMPM payments as specified.
+
+7. Exclusions and Carve‑Outs
+- Services that are excluded from the PMPM arrangement (for which Payer will pay FFS or otherwise) are listed in Exhibit B. Carve‑outs may include, but are not limited to, inpatient hospital services, pharmacy, specialty services, behavioral health, or services mandated by law to be paid FFS.
+
+8. Reconciliation and Retroactive Adjustments
+- Quarterly and annual reconciliations will be performed to compare aggregate PMPM payments to allowable costs, encounter submissions, utilization targets, or other reconciliation metrics specified in Exhibit E.  
+- Retroactive eligibility changes, retroactive adjustments due to claims processing corrections, or corrections of enrollment/attribution errors shall be reconciled in the next scheduled reconciliation period. Net amounts owing by either Party as a result of reconciliation shall be paid within 60 days of determination, unless otherwise agreed.
+
+9. Audit Rights and Recordkeeping
+- Provider shall maintain records necessary to support PMPM calculations, enrollment/attribution, and performance metrics for a period of at least six (6) years. Payer (or its designees) shall have the right to audit such records during normal business hours upon [30] days’ notice. Findings resulting in payment adjustments shall be reconciled per Section 8.  
+- All audits shall be conducted in a manner that protects patient privacy and complies with applicable law.
+
+10. Attribution, Enrollment Changes, and New Members
+- Member attribution methodology and rules for handling enrollment starts, terminations, transfers, and ambiguity are set forth in Exhibit C. Provider shall be informed promptly of changes that affect PMPM calculations.  
+- Newly enrolled Members shall be included in PMPM payments beginning [the first of the month following enrollment/first day of enrollment month], as specified in Exhibit C.
+
+11. Termination and Transition
+- On termination or expiration of this Agreement, Parties shall perform a final reconciliation of PMPM payments and adjustments covering the Contract Year or termination date. Any net balance due shall be paid within 60 days of final reconciliation.  
+- Provider shall continue to provide services for any Members during any transition period as required by law or this Agreement; funding/settlement for that period shall be addressed in the transition plan (Exhibit F).
+
+12. Compliance, Taxes, and Regulatory Changes
+- The Parties shall comply with all applicable federal and state laws and regulations governing payments, taxation, reporting, and privacy (including HIPAA where applicable).  
+- If a change in law or regulation materially alters the cost or viability of the PMPM arrangement, the Parties shall negotiate in good faith an appropriate amendment to rates, scope, or payment mechanics.
+
+13. Disputes and Remedies
+- Disputes regarding PMPM calculations, reconciliations, or adjustments shall be handled per the Dispute Resolution provisions of this Agreement. Pending resolution, amounts not in dispute shall be paid in accordance with this Section.  
+- Except as expressly set forth herein, remedies for nonpayment, underpayment, or breach are governed by the General Terms of this Agreement.
+
+14. Survival
+- The provisions of this Section necessary to effect final reconciliation, audit, payment, and dispute resolution shall survive termination or expiration of the Agreement for the duration specified in Section 9.
+
+15. Exhibits
+- Exhibits referenced in this Section shall identify: PMPM Rate(s) (Exhibit A), Covered and Excluded Services (Exhibit B), Attribution Rules (Exhibit C), Quality and Risk‑Sharing Terms (Exhibit D), Reconciliation Methodology (Exhibit E), and Transition Plan (Exhibit F).
+
+Example calculation (illustrative):
+- If PMPM Rate = $25 and attributed Member count for March = 10,000, March Payment = $25 × 10,000 = $250,000 (less any agreed withholds or adjustments).
+
+[End of Section]
+
+If you want, I can: (a) tailor this section to a particular state law or payer/provider type, (b) draft the Exhibits (A–F) with sample language, or (c) convert this into numbered contract language with cross‑references to other Agreement sections. Which would you prefer?
+2025-09-30 10:18:47,939 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:47,939 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:47,939 INFO ExtractionAgent: ProcessText: Inside: Responsibilities for care coordination, utilization management, and outcomes reporting.
+2025-09-30 10:18:48,368 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:18:48,374 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:18:48,375 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+paragraph
+Responsibilities for care coordination, utilization management, and outcomes reporting.
+2025-09-30 10:18:54,447 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:18:54,448 INFO ExtractionAgent: ProcessText: Return: LLM response
+Responsibilities include coordinating patient-centered care across settings by developing and updating individualized care plans, facilitating transitions and referrals, communicating with patients, families and the interdisciplinary team, and ensuring timely access to appropriate services and community resources. In utilization management, responsibilities encompass conducting prospective, concurrent and retrospective reviews to verify medical necessity, authorizing or recommending alternative levels of care, managing prior authorizations and appeals, and working to contain costs while preserving quality through evidence-based guidelines. For outcomes reporting, duties involve defining and tracking key performance indicators (clinical outcomes, utilization, readmissions, length of stay, patient experience and cost metrics), analyzing data to identify trends and gaps, preparing regular internal and external reports required by payers and regulators, and using findings to drive quality improvement initiatives. All activities must be documented in the medical record, comply with regulatory and privacy requirements, and support continuous monitoring and improvement of patient care and resource use.
+2025-09-30 10:18:54,448 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:54,449 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:18:54,449 INFO ExtractionAgent: ProcessText: Inside: Shared savings or risk-sharing agreements tied to quality metrics and total cost of care.
+2025-09-30 10:18:54,749 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:18:54,755 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:18:54,755 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+section
+Shared savings or risk-sharing agreements tied to quality metrics and total cost of care.
+2025-09-30 10:19:14,527 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:19:14,531 INFO ExtractionAgent: ProcessText: Return: LLM response
+Section: Shared Savings / Risk-Sharing Agreements Tied to Quality Metrics and Total Cost of Care
+
+Purpose
+- Establish a framework for aligning financial incentives between payor(s) and provider(s) to improve quality of care and reduce the total cost of care (TCOC) for a defined population, while protecting quality and access.
+
+Key Definitions
+- Total Cost of Care (TCOC): All allowed spending for the attributed patient population across care settings over a defined performance period.
+- Shared Savings: A model where providers who reduce TCOC below a benchmark receive a portion of the savings.
+- Risk-Sharing (Two-Sided Risk): Providers share in savings and also bear a portion of costs above the benchmark (losses).
+- Quality Adjustment Factor (QAF): A multiplier or offset based on performance on agreed quality metrics that modifies shared savings/losses.
+
+Agreement Structure Options
+- Upside-only (shared savings only): Provider earns portion of savings if TCOC < benchmark and quality thresholds met; no downside.
+- Two-sided risk: Provider receives savings but is also responsible for a portion of losses if TCOC > benchmark.
+- Corridor/Performance Threshold: A minimum savings/loss threshold (e.g., ±2–3%) before sharing applies to limit variance.
+- Cap and Floor: Limits on maximum shared savings or losses to control financial exposure.
+
+Attribution and Population
+- Attribution method: Prospective (assigned at start) or retrospective (based on claims during period). Clearly define inclusion/exclusion (e.g., Medicaid vs Medicare, dual eligibles).
+- Risk adjustment: Use an agreed model (e.g., CMS-HCC, clinical risk scores) to adjust benchmarks for case-mix and changes in population acuity.
+
+Benchmarking and Savings Calculation
+- Benchmark: Prior historical spending (rolling baseline), regional benchmark, or hybrid; adjust for trend and utilization changes.
+- Adjust for one-time events, coding intensity, and population shifts.
+- Calculation example:
+  - Expected cost (risk-adjusted benchmark) = B
+  - Actual cost for period = A
+  - Gross savings = max(0, B − A) or gross loss = max(0, A − B)
+  - Quality-adjusted shared savings = Gross savings × Sharing rate × Quality Adjustment Factor
+- Sharing rate: Negotiated percent (e.g., 50% of savings); different rates may apply across service lines.
+
+Quality Metrics and Performance
+- Select a balanced set of metrics tying financial outcomes to care quality, safety, patient experience, and preventative care. Categories:
+  - Clinical outcomes (readmissions, HbA1c control, blood pressure control)
+  - Utilization measures (ER visit rates, admissions for ambulatory-sensitive conditions)
+  - Patient experience (CAHPS scores)
+  - Preventive care and care coordination measures
+- Define measurement specifications, data sources, reporting cadence, thresholds for minimum acceptable performance, and how metric performance modifies shared savings (bonus/penalty or QAF).
+- Consider phased approach: start with process and utilization measures and add outcomes over time.
+
+Data, Reporting, and Transparency
+- Regular reporting cadence (monthly/quarterly) with access to claims, encounter, and clinical data.
+- Standard data formats, KPIs dashboard, and audit rights for validation.
+- Dispute resolution process and reconciliation timeline (e.g., preliminary reports quarterly; final reconciliation annually).
+
+Governance and Operations
+- Establish a joint governance committee (executive and clinical) to oversee performance, metric selection, corrective action plans, and appeals.
+- Care management, utilization review, and data-sharing protocols to support improvement.
+- Performance improvement plans for underperforming metrics with clear milestones.
+
+Financial Flow and Reconciliation
+- Timing and method of payments/recoupment: periodic interim distributions vs annual reconciliation.
+- Withholds or performance reserves may be held to cover potential losses or quality shortfalls.
+- Tax and accounting treatment considerations.
+
+Compliance and Legal Protections
+- Address regulatory compliance (Stark Law, Anti-Kickback Statute, state laws), ensure arrangements meet safe-harbor requirements or are structured under value-based exceptions.
+- Patient protections: continuity of care, no reduction in access, clear communication about care management.
+- Data privacy and security: HIPAA-compliant data exchange and business associate agreements.
+
+Risk Mitigation and Contingencies
+- Stop-loss/maximum loss limits, reinsurance options for extreme variance.
+- Periodic re-baselining of benchmarks to avoid stale targets.
+- Mechanism for addressing major population changes (e.g., epidemics, facility closures).
+
+Termination and Transition
+- Define exit triggers (material breach, regulatory change), reconciliation procedures, final audit period, and responsibilities for open claims and patient transitions.
+
+Implementation Roadmap (high-level)
+1. Define population, attribution, and data feeds.
+2. Agree benchmarks, risk-adjustment method, sharing parameters, and quality metrics.
+3. Build reporting and reconciliation processes; governance structure.
+4. Pilot period with frequent reviews; refine metrics and calculations.
+5. Scale to full performance year, with annual re-evaluation.
+
+Sample contractual language (short)
+- “Shared savings shall be determined annually by comparing the risk-adjusted benchmark to actual TCOC for the attributed population. Provider shall be entitled to X% of shared savings only if a Quality Adjustment Factor of at least Y% is achieved across the agreed metric set. In a two-sided model, provider shall be responsible for X% of any excess costs above the benchmark, subject to a loss cap of $Z per performance year and a corridor of ±2%.”
+
+Risks and Considerations
+- Upcoding/coding intensity, data lags, and attribution disputes.
+- Provider financial strain under rapid downside exposure.
+- Need for robust care management infrastructure to achieve improvements.
+
+If you want, I can:
+- Draft sample contract clauses tailored to a specific payer/provider type.
+- Propose a specific set of quality metrics and performance thresholds for your population.
+- Create an example calculation and reconciliation worksheet using numbers you provide.
+2025-09-30 10:19:14,531 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:19:14,531 INFO ExtractionAgent: --------------------------------
+2025-09-30 10:19:14,531 INFO ExtractionAgent: ProcessText: Inside: Periodic reconciliation and true-up processes for over/underutilization against actuarial benchmarks.
+2025-09-30 10:19:14,853 INFO httpx: HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-09-30 10:19:14,859 INFO DBHandler: Returning 1 hits from query.
+2025-09-30 10:19:14,859 INFO ExtractionAgent: ProcessText: Invoke LLM with prompt:
+paragraph
+Periodic reconciliation and true-up processes for over/underutilization against actuarial benchmarks.
+2025-09-30 10:19:22,341 INFO httpx: HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+2025-09-30 10:19:22,344 INFO ExtractionAgent: ProcessText: Return: LLM response
+Periodic reconciliation and true-up processes involve regularly comparing actual utilization or experience to actuarial benchmarks and making adjustments to reflect over- or underutilization. At scheduled intervals (monthly, quarterly, or annually), actuaries and finance teams reconcile utilization data, verifying data quality, applying credibility factors, and quantifying variances from expected costs or volumes. Material deviations trigger a true-up: financial adjustments to reserves, premiums, or vendor payments, accompanied by root-cause analysis to determine whether variance stems from data issues, temporary trends, or structural changes. Governance procedures define thresholds for automatic adjustments, approval workflows, stakeholder communications, and required documentation to ensure transparency and auditability. The process supports regulatory compliance, improves forecasting accuracy, and informs corrective actions such as benefit design changes, pricing updates, or utilization management initiatives to align future experience with actuarial expectations.
+2025-09-30 10:19:22,344 INFO ExtractionAgent: --------------------------------
+Error decoding JSON fragment: | Term | Definition |
+|---|---|
+| Covered Services | Healthcare services reimbursable under this Agreement that are medically necessary and provided to Members. |
+| Member | An individual enrolled in a TrustInsure health plan entitled to receive Covered Services. |
+| Clean Claim | A complete, legible, and accurate claim that contains all required data elements and complies with industry standards. |
+| Fee Schedule | A list of CPT/HCPCS codes with associated reimbursement amounts agreed upon in this Agreement. |
+| Medical Necessity | Health services that are clinically appropriate, evidence-based, and not primarily for the convenience of the patient or provider. |
+| Emergency Services | Healthcare services for a medical condition manifesting acute symptoms of sufficient severity that the absence of immediate medical attention could result in serious jeopardy. |
+| Primary Care Services | Services provided by general practitioners, internists, pediatricians, or family practitioners acting as a Member’s primary point of entry into the healthcare system. |
+| Utilization Management | Processes to evaluate the medical necessity, appropriateness, and efficiency of the use of healthcare services, procedures, and facilities. |
+| Credentialing | Verification of licensure, education, training, experience, and competence prior to participation in the TrustInsure network. |. Error: Expecting value: line 1 column 1 (char 0)
+Error decoding JSON fragment: Here’s a concise reference table of common primary care and preventive health services. Frequency and specific tests depend on age, sex, medical history, and local guidelines — ask your clinician for a personalized plan.
+
+| Service | Description | Typical providers | Target population / frequency (general) | Notes / examples |
+|---|---:|---|---|---|
+| Annual wellness / routine physical exam | Comprehensive visit to review health, meds, vitals, preventive plan | PCP (MD/DO), NP, PA | Adults — yearly or as recommended | Opportunity to update vaccines, screenings, med review |
+| Immunizations | Routine and seasonal vaccines to prevent infectious disease | PCP, nurse, pharmacist | All ages — childhood schedule; adults: influenza annually, Tdap once/booster, HPV through young adulthood, pneumococcal/shingles by age/risk | Follow CDC/local immunization schedules |
+| Blood pressure screening | Measurement and follow-up of hypertension | PCP, nurse, pharmacist | Adults — at least every visit; more often if elevated | Home BP monitoring for diagnosis/management |
+| Lipid (cholesterol) screening & CV risk assessment | Measure cholesterol, calculate ASCVD risk, guide prevention | PCP, NP, PA | Adults — baseline in early adulthood; repeat every 4–6 years or sooner if risk factors | Guides statin initiation and lifestyle counseling |
+| Diabetes screening (glucose, HbA1c) | Detect prediabetes/diabetes | PCP, NP, PA | Adults 35–70 (or earlier with risk factors) — repeat per results | Fasting glucose, A1c, or 2-hr OGTT as indicated |
+| Cancer screening — breast | Mammography to detect breast cancer | PCP, OB/GYN, radiology | Women 40–74: individualized/ guideline-based (often every 1–2 years) | Shared decision-making for age 40–49 |
+| Cancer screening — cervical | Pap smear ± HPV testing for cervical precancer detection | PCP, OB/GYN | Women 21–65 per guideline intervals (e.g., Pap every 3 yrs, Pap+HPV every 5 yrs) | HPV vaccination reduces risk |
+| Cancer screening — colorectal | Colonoscopy, FIT, or sigmoidoscopy to detect polyps/cancer | PCP, gastroenterology | Adults 45–75 (earlier if risk factors) — interval depends on test | Various accepted screening options |
+| Obesity screening & nutrition/exercise counseling | BMI, waist, lifestyle counseling, referral to programs | PCP, dietitian, behavioral health | All ages — annually or as needed | May include weight-loss meds or bariatric referral |
+| Tobacco, alcohol, substance-use screening & cessation | Screening (e.g., AUDIT, brief intervention), treatment/referral | PCP, behavioral health, addiction specialists | All adults — at least yearly; more often in high-risk | Pharmacotherapy and counseling available |
+| Mental health screening | Screen for depression, anxiety, suicidality; brief interventions | PCP, behavioral health, psychiatry | All ages — periodic (e.g., PHQ-9 for adults) | Integrate treatment/referral as needed |
+| Reproductive health — contraception & preconception | Counseling, prescribing contraception, pre-pregnancy risk reduction | PCP, OB/GYN, family planning clinics | Reproductive-age persons as desired | STI screening included when indicated |
+| Prenatal care | Early and ongoing care for pregnancy, screening and risk management | OB/GYN, family medicine, midwives | Pregnant persons — first trimester onward | Includes genetic screening, ultrasounds, immunizations (e.g., Tdap) |
+| STI screening & HIV prevention | Testing, counseling, PrEP consideration, partner services | PCP, sexual health clinics | Sexually active individuals per risk (e.g., annual chlamydia/gonorrhea for sexually active women <25) | Tailor to sexual practices and exposures |
+| Bone health — osteoporosis screening | DEXA scan, fracture risk assessment | PCP, endocrinology | Women ≥65, men ≥70, or earlier with risk factors | Calcium/vitamin D counseling; pharmacotherapy if indicated |
+| Geriatric preventive care (falls, cognition, meds) | Fall-risk assessment, vaccination review, polypharmacy, cognitive screening | PCP, geriatrician | Older adults — annually or with functional change | Home-safety evaluation, advance-care planning |
+
+If you want, I can:
+- Create a version organized by age group (pediatric, adolescent, adult, older adult).
+- Produce a checklist for one specific visit (e.g., annual adult checkup).
+- Add guideline references (USPSTF, CDC, WHO) or local schedule details.. Error: Expecting value: line 1 column 1 (char 0)
+Error decoding JSON fragment: Effective management of chronic conditions relies on a patient-centered approach that combines evidence-based medical treatment with ongoing education and self-management support. Educating patients about their diagnosis, medication regimen, symptom monitoring, lifestyle modifications (diet, exercise, sleep), and when to seek care empowers them to make informed decisions and improves adherence. Tailoring education to the individual’s health literacy, cultural background, and readiness to change—using teach-back, written materials, and digital tools—enhances understanding and retention. Regular follow-up, care coordination among multidisciplinary teams, and use of remote monitoring or telehealth help detect problems early and adjust treatment plans. By setting realistic goals, reinforcing positive behaviors, and connecting patients with community resources and support groups, clinicians can reduce complications, hospitalizations, and improve quality of life for people living with chronic illness.. Error: Expecting value: line 1 column 1 (char 0)
+Error decoding JSON fragment: Here is a concise reference table for common radiographic imaging (chest, extremities, abdominal X‑rays). Doses are approximate and will vary by equipment and protocol.
+
+| Exam | Common indications | Typical views | Patient positioning / technique tips | Key findings seen on radiograph | Limitations / when to escalate |
+|---|---:|---|---|---|---|
+| Chest X‑ray | Cough, dyspnea, chest pain, suspected infection, trauma, line/tube placement, monitoring cardiopulmonary status | PA and lateral (standard); AP (portable/bedbound); AP upright for suspected effusion or if PA not possible | PA upright with full inspiration; lateral to localize pathology; AP supine/semirecumbent for critically ill | Consolidation (pneumonia), pulmonary edema, pleural effusion, pneumothorax, cardiomegaly, lines/tubes | Limited sensitivity for small lesions, early pulmonary embolism, mediastinal detail—consider CT chest, ultrasound for pleural fluid |
+| Extremity X‑ray (upper/lower limbs) | Trauma (fracture/dislocation), persistent localized pain, pre/post‑op, osteomyelitis, degenerative joint disease, foreign body | At least two orthogonal views (AP and lateral); oblique views as indicated; special views for joints | Position to include joint above & below when fracture suspected; reduce overlap and use true orthogonal views | Fractures, dislocations, subluxation, deformity, joint space narrowing, periosteal reaction, some foreign bodies (radiopaque) | Poor for cartilage/ligament/tendon injuries—consider CT for complex fractures, MRI for soft tissue/occult fractures |
+| Abdominal X‑ray (AXR/KUB) | Acute abdominal pain, suspected bowel obstruction, perforation (upright/left decubitus), constipation, radiopaque foreign bodies | Supine (KUB) + upright AP chest/abdomen or upright abdominal; left lateral decubitus for suspected free intraperitoneal air if upright not possible | Supine for baseline gas pattern; upright or decubitus to demonstrate free air and air‑fluid levels; ensure expiratory/inspiratory appropriate to view | Bowel obstruction (dilated loops, air‑fluid levels), free intraperitoneal air (upright/decubitus), large renal/ureteric calculi (if radiopaque), extensive fecal loading | Low sensitivity for many causes of acute abdomen (e.g., early ischemia, small perforations, non‑radiopaque stones)—CT abdomen/pelvis often required |
+
+Approximate effective doses (adult):
+- PA chest: ~0.02 mSv; AP portable/supine higher (~0.05–0.2 mSv depending on technique)
+- Extremity: very low, ~0.001–0.01 mSv per view
+- Abdominal (single supine AP KUB): ~0.2–0.8 mSv; upright series similar or slightly higher
+
+Important precautions:
+- Minimize radiation in pregnancy—use ultrasound or MRI when feasible; if X‑ray required, shield and limit field.
+- Always obtain at least two orthogonal views for suspected fracture.
+- Correlate radiograph findings with clinical exam; escalate to CT/MRI/ultrasound when radiograph is insufficient.
+
+If you want, I can:
+- Produce a printable/CSV version of this table.
+- Add pediatric dose ranges and pediatric technique notes.. Error: Expecting value: line 1 column 1 (char 0)
+Error decoding JSON fragment: Below is a concise reference table summarizing routine immunizations per CDC/ACIP guidance (children, adolescents, adults, pregnancy, and special populations). This is a summary — always confirm current, patient-specific recommendations on the CDC immunization schedules (child/adolescent, adult, and pregnancy) and with the patient’s clinician.
+
+Columns: Vaccine | Primary target(s) | Routine schedule (key points) | Catch-up / special indications | Contraindications / precautions / notes
+
+- Hepatitis B (HepB)
+  - Infants, children, unvaccinated adults at risk
+  - Routine: 3-dose series — birth, 1–2 months, 6–18 months
+  - Catch-up: 3-dose or 2-dose adult schedules depending on product; indicated for high-risk adults, occupational exposure
+  - Contraindications: severe allergic reaction to prior dose or vaccine component
+
+- Rotavirus (RV)
+  - Infants
+  - Routine: oral vaccine — RV5 (3 doses) or RV1 (2 doses); start before 15 weeks; final dose by 8 months
+  - Catch-up: not initiated after 15 weeks; doses must meet min intervals
+  - Contraindications: history of intussusception, severe combined immunodeficiency (SCID)
+
+- Diphtheria-Tetanus-Pertussis (DTaP) / Tdap / Td
+  - Infants/children/adolescents/adults
+  - Routine: DTaP at 2,4,6, 15–18 months, 4–6 years; Tdap once at 11–12 years (or for pregnant persons each pregnancy 27–36 wks), then Td or Tdap booster every 10 years as indicated
+  - Catch-up: Complete 5-dose series for children; Tdap for unvaccinated adults
+  - Contraindications: severe allergic reaction; encephalopathy within 7 days of prior pertussis-containing vaccine
+
+- Haemophilus influenzae type b (Hib)
+  - Infants and some high-risk older children
+  - Routine: 3–4 dose series starting at 2 months (depending on product)
+  - Catch-up: Varies by age; not routinely recommended for most adults, except certain asplenic or immunocompromised persons
+  - Contraindications: severe allergic reaction to prior dose
+
+- Pneumococcal conjugate (PCV13/15/20) and polysaccharide (PPSV23)
+  - Children (PCV) and adults at risk
+  - Routine (children): PCV series at 2,4,6 months and 12–15 months
+  - Routine (adults): Pneumococcal vaccination indicated for adults ≥65 and younger adults with certain conditions — current practice uses PCV15 or PCV20 strategies followed by PPSV23 in some cases per age/condition
+  - Catch-up: Individualized for immunocompromised, asplenia, chronic conditions
+  - Contraindications: severe allergic reaction to vaccine component
+
+- Inactivated Poliovirus (IPV)
+  - Infants/children, travelers to polio-affected areas
+  - Routine: 4 doses at 2,4, 6–18 months, and 4–6 years
+  - Catch-up: Complete series as indicated for unvaccinated persons
+  - Contraindications: severe allergic reaction
+
+- Influenza (IIV/LAIV)
+  - All persons ≥6 months annually
+  - Routine: Annual vaccination (IIV injectible preferred for many groups; LAIV intranasal is an option for some healthy nonpregnant persons 2–49 years)
+  - Special indications: high-risk groups (pregnancy, chronic disease, healthcare workers)
+  - Contraindications: severe allergic reaction to prior dose or component; LAIV contraindicated in pregnancy, immunocompromised, some chronic conditions; egg allergy is not a contraindication for modern flu vaccines
+
+- Measles-Mumps-Rubella (MMR)
+  - Children, susceptible adults
+  - Routine: 2 doses — 12–15 months and 4–6 years (or 4 weeks apart for adults/healthcare workers/travelers)
+  - Catch-up: 2-dose series for unvaccinated adults without evidence of immunity; post-exposure use in some settings
+  - Contraindications: pregnancy, severe immunosuppression, severe allergy to vaccine component
+
+- Varicella (chickenpox)
+  - Children and susceptible adults
+  - Routine: 2 doses — 12–15 months and 4–6 years; 2 doses for susceptible adults (4 weeks apart)
+  - Catch-up: as above; immunocompromised exceptions (use with caution)
+  - Contraindications: pregnancy, severe immunosuppression, severe allergy to vaccine components
+
+- Hepatitis A (HepA)
+  - Children, certain at-risk adults, travelers
+  - Routine: 2-dose series (6–18 months after first) recommended for all children aged 12–23 months; older children/adults at risk should be vaccinated
+  - Catch-up: Complete 2-dose series for unvaccinated persons
+  - Contraindications: severe allergic reaction
+
+- Human Papillomavirus (HPV)
+  - Preteens/adolescents and catch-up to mid-20s/26; shared decision-making for some older adults
+  - Routine: 2-dose series (0, 6–12 months) if started before 15 years; 3-dose series if started at 15+; recommended at 11–12 years (can start at 9)
+  - Catch-up: up to age 26 routinely; 27–45 years shared decision-making for some
+  - Contraindications: severe allergic reaction to prior dose/component; not for pregnant persons (defer until after pregnancy)
+
+- Meningococcal conjugate (MenACWY) and serogroup B (MenB)
+  - Adolescents, certain high-risk groups (asplenia, complement deficiency), travelers, outbreak control
+  - Routine (MenACWY): 2-dose series at 11–12 years and a booster at 16 years
+  - MenB: recommended for certain high-risk persons and may be used in adolescents/young adults 16–23 years (shared decision-making)
+  - Catch-up: as recommended for high-risk or outbreak situations
+  - Contraindications: severe allergic reaction
+
+- COVID-19 (SARS-CoV-2) vaccines
+  - All eligible persons per current guidance
+  - Routine: primary series and recommended boosters per current ACIP guidance (product-specific; bivalent formulations used for updated boosters)
+  - Special groups: older adults, immunocompromised, pregnant persons have specific booster recommendations
+  - Contraindications: severe allergic reaction to prior dose or components (e.g., PEG/polysorbate depending on product)
+
+- Herpes zoster (Shingles) — Recombinant zoster vaccine (RZV, e.g., Shingrix)
+  - Adults ≥50 years routine; adults ≥19 with immunocompromising conditions often recommended
+  - Routine: 2 doses, 2–6 months apart
+  - Catch-up: vaccinate unvaccinated older adults; immunocompromised persons recommended earlier
+  - Contraindications: severe allergic reaction; not a live vaccine (safe in many immunocompromised except where specifically contraindicated)
+
+- Respiratory syncytial virus (RSV) vaccines/monoclonal antibodies (recent guidance)
+  - Older adults and certain pregnant persons/newborn protection (ACIP/CDC guidance evolving)
+  - Routine: recommendations introduced for adults ≥60 and for maternal immunization in some pregnancies to protect infants — follow current ACIP statements
+  - Catch-up: product- and indication-specific
+  - Contraindications: product-specific; consult latest CDC guidance
+
+General safety notes / special populations:
+- Live vaccines (MMR, varicella, LAIV) are generally contraindicated in pregnancy and in severely immunocompromised persons. Inactivated/recombinant vaccines are generally preferred for these groups when indicated.
+- Pregnant persons: influenza (inactivated) and Tdap each pregnancy (27–36 weeks) are routinely recommended. Other vaccines may be recommended depending on risk (e.g., COVID-19, HepB if at risk).
+- Asplenia, complement deficiencies, cochlear implants, and certain chronic conditions change pneumococcal, meningococcal, and Hib recommendations — follow condition-specific CDC guidance.
+- For all vaccine decisions, check: CDC’s Child & Adolescent Immunization Schedule, Adult Immunization Schedule, and Pregnancy Immunization guidance — and consult the patient’s clinician for individualized care.
+
+References / where to verify:
+- CDC Immunization Schedules (child/adolescent, adult, pregnancy) and ACIP recommendations at cdc.gov/vaccines
+
+If you want, I can:
+- Generate a printable child/adolescent or adult schedule table,
+- Provide a simplified checklist by age group (infant, toddler, school-age, adolescent, adult, older adult, pregnancy),
+- Or produce citations/links to specific ACIP recommendations. Which would you prefer?. Error: Expecting value: line 1 column 1 (char 0)
+Error decoding JSON fragment: Here are three simple table formats showing the sentence content. Tell me which format you prefer or what columns/fields you want added.
+
+Markdown table
+| Party    | Payment Basis         | Reference      | Scope            |
+|----------|-----------------------|----------------|------------------|
+| Provider | Reimbursed per Fee Schedule | Appendix B     | Covered Services rendered to Members |
+
+Plain-text (ASCII) table
++----------+---------------------------+-----------+-----------------------------------------+
+| Party    | Payment Basis             | Reference | Scope                                   |
++----------+---------------------------+-----------+-----------------------------------------+
+| Provider | Reimbursed per Fee Schedule | Appendix B | Covered Services rendered to Members     |
++----------+---------------------------+-----------+-----------------------------------------+
+
+CSV
+Party,Payment Basis,Reference,Scope
+Provider,"Reimbursed per Fee Schedule",Appendix B,"Covered Services rendered to Members"
+
+Would you like different column names, additional details (rates, effective date), or this exported to a specific file format?. Error: Expecting value: line 1 column 1 (char 0)
+Error decoding JSON fragment: Coordination of Benefits (COB) ensures that when a Member has more than one health insurance policy, the plans work together to determine the correct payment responsibility so benefits are not duplicated. The primary insurer pays first according to its terms; the secondary insurer may then consider the remaining eligible charges up to its plan limits after receiving the Explanation of Benefits (EOB) from the primary carrier. Members and providers must disclose other coverage at the time of service and submit claims to the primary payer first, complying with each plan’s timely‑filing requirements and documentation rules. Following COB prevents overpayments, reduces balance billing to Members, and helps ensure claims are processed accurately; contact member services or the plan’s COB unit for questions or to report additional coverage.. Error: Expecting value: line 1 column 1 (char 0)
+
+=== Merged JSON Output ===
+{
+  "insurer": "",
+  "provider": "",
+  "date": "",
+  "claim-submission-sla-days": 90,
+  "claim-processing-sla-days": 30,
+  "prior-authorization-urgent-sla-hours": 72,
+  "prior-authorization-routine-sla-days": 14,
+  "record-retention-sla-years": 10,
+  "agreement-initial-term-years": 3,
+  "agreement-auto-renewal-term-years": 1,
+  "agreement-termination-notice-days": 90,
+  "agreement-continuity-of-care-period-days": 90,
+  "paragraphs": [
+    "{\"insurer\":\"TrustInsure\",\"provider\":\"Provider\",\"date\":null}",
+    "Section: Monthly Per\u2011Member\u2011Per\u2011Month (PMPM) Payments in Lieu of Fee\u2011For\u2011Service Reimbursement\n\n1. Purpose\nThis Section describes the Parties\u2019 agreement to compensate Provider by way of monthly per\u2011member\u2011per\u2011month (PMPM) payments for the provision of the Defined Services in lieu of fee\u2011for\u2011service reimbursement.\n\n2. Definitions\n- \u201cPMPM Rate\u201d means the agreed dollar amount per Member per month for the Defined Services, as set forth in Exhibit A (or other referenced schedule).  \n- \u201cDefined Services\u201d means the specific services covered by this PMPM arrangement and listed in Exhibit B.  \n- \u201cMember\u201d means an individual enrolled with the Payer and attributed to Provider under the attribution rules in Exhibit C.  \n- \u201cMember Month\u201d means one Member enrolled and attributed to Provider for any portion of a calendar month, unless otherwise specified.  \n- \u201cCapitation Period\u201d means the contract period or calendar year for which PMPM payments are calculated.  \n\n3. Payment Methodology\n- Payer shall pay Provider a PMPM payment for each Member for each Member Month that Member is attributed to Provider, subject to any withholds, adjustments, carve\u2011outs, exclusions, and reconciliations described herein.  \n- The PMPM payment is intended to cover all costs of furnishing the Defined Services unless an item or service is expressly carved out as Fee\u2011For\u2011Service (FFS) or otherwise excluded in Exhibit B.\n\n4. Calculation and Timing\n- Monthly Payment Calculation: Monthly Payment = (PMPM Rate) \u00d7 (Number of Member Months in the month).  \n- Payer shall provide Provider with an invoice or remittance advice each month specifying the PMPM Rate, Member count, and total payment. Payments are due within 30 days of invoice date (or as otherwise agreed).  \n- Mid\u2011month enrollment changes: A Member who is enrolled for any portion of a month shall generally be counted as a full Member Month unless Exhibit C specifies pro\u2011rata treatment.\n\n5. Invoicing, Payment, and Reporting\n- Payer shall remit payments electronically to Provider\u2019s designated account and include a detailed remittance report showing Member identifiers (as permitted by privacy laws), Member counts, PMPM rate, gross payment, withholds, prior period adjustments, and net payment.  \n- Provider shall timely submit any required billing information and reports necessary for reconciliation.\n\n6. Withholds, Incentives, and Risk Sharing\n- The Parties may agree to withhold a percentage of PMPM payments for quality, performance, or risk\u2011sharing purposes as detailed in Exhibit D. Withheld amounts shall be released or reconciled in accordance with the performance measurement and payment schedule in Exhibit D.  \n- Any upside/downside risk arrangements, shared savings, or shared losses are described in Exhibit D and are applied in addition to PMPM payments as specified.\n\n7. Exclusions and Carve\u2011Outs\n- Services that are excluded from the PMPM arrangement (for which Payer will pay FFS or otherwise) are listed in Exhibit B. Carve\u2011outs may include, but are not limited to, inpatient hospital services, pharmacy, specialty services, behavioral health, or services mandated by law to be paid FFS.\n\n8. Reconciliation and Retroactive Adjustments\n- Quarterly and annual reconciliations will be performed to compare aggregate PMPM payments to allowable costs, encounter submissions, utilization targets, or other reconciliation metrics specified in Exhibit E.  \n- Retroactive eligibility changes, retroactive adjustments due to claims processing corrections, or corrections of enrollment/attribution errors shall be reconciled in the next scheduled reconciliation period. Net amounts owing by either Party as a result of reconciliation shall be paid within 60 days of determination, unless otherwise agreed.\n\n9. Audit Rights and Recordkeeping\n- Provider shall maintain records necessary to support PMPM calculations, enrollment/attribution, and performance metrics for a period of at least six (6) years. Payer (or its designees) shall have the right to audit such records during normal business hours upon [30] days\u2019 notice. Findings resulting in payment adjustments shall be reconciled per Section 8.  \n- All audits shall be conducted in a manner that protects patient privacy and complies with applicable law.\n\n10. Attribution, Enrollment Changes, and New Members\n- Member attribution methodology and rules for handling enrollment starts, terminations, transfers, and ambiguity are set forth in Exhibit C. Provider shall be informed promptly of changes that affect PMPM calculations.  \n- Newly enrolled Members shall be included in PMPM payments beginning [the first of the month following enrollment/first day of enrollment month], as specified in Exhibit C.\n\n11. Termination and Transition\n- On termination or expiration of this Agreement, Parties shall perform a final reconciliation of PMPM payments and adjustments covering the Contract Year or termination date. Any net balance due shall be paid within 60 days of final reconciliation.  \n- Provider shall continue to provide services for any Members during any transition period as required by law or this Agreement; funding/settlement for that period shall be addressed in the transition plan (Exhibit F).\n\n12. Compliance, Taxes, and Regulatory Changes\n- The Parties shall comply with all applicable federal and state laws and regulations governing payments, taxation, reporting, and privacy (including HIPAA where applicable).  \n- If a change in law or regulation materially alters the cost or viability of the PMPM arrangement, the Parties shall negotiate in good faith an appropriate amendment to rates, scope, or payment mechanics.\n\n13. Disputes and Remedies\n- Disputes regarding PMPM calculations, reconciliations, or adjustments shall be handled per the Dispute Resolution provisions of this Agreement. Pending resolution, amounts not in dispute shall be paid in accordance with this Section.  \n- Except as expressly set forth herein, remedies for nonpayment, underpayment, or breach are governed by the General Terms of this Agreement.\n\n14. Survival\n- The provisions of this Section necessary to effect final reconciliation, audit, payment, and dispute resolution shall survive termination or expiration of the Agreement for the duration specified in Section 9.\n\n15. Exhibits\n- Exhibits referenced in this Section shall identify: PMPM Rate(s) (Exhibit A), Covered and Excluded Services (Exhibit B), Attribution Rules (Exhibit C), Quality and Risk\u2011Sharing Terms (Exhibit D), Reconciliation Methodology (Exhibit E), and Transition Plan (Exhibit F).\n\nExample calculation (illustrative):\n- If PMPM Rate = $25 and attributed Member count for March = 10,000, March Payment = $25 \u00d7 10,000 = $250,000 (less any agreed withholds or adjustments).\n\n[End of Section]\n\nIf you want, I can: (a) tailor this section to a particular state law or payer/provider type, (b) draft the Exhibits (A\u2013F) with sample language, or (c) convert this into numbered contract language with cross\u2011references to other Agreement sections. Which would you prefer?",
+    "Responsibilities include coordinating patient-centered care across settings by developing and updating individualized care plans, facilitating transitions and referrals, communicating with patients, families and the interdisciplinary team, and ensuring timely access to appropriate services and community resources. In utilization management, responsibilities encompass conducting prospective, concurrent and retrospective reviews to verify medical necessity, authorizing or recommending alternative levels of care, managing prior authorizations and appeals, and working to contain costs while preserving quality through evidence-based guidelines. For outcomes reporting, duties involve defining and tracking key performance indicators (clinical outcomes, utilization, readmissions, length of stay, patient experience and cost metrics), analyzing data to identify trends and gaps, preparing regular internal and external reports required by payers and regulators, and using findings to drive quality improvement initiatives. All activities must be documented in the medical record, comply with regulatory and privacy requirements, and support continuous monitoring and improvement of patient care and resource use.",
+    "Section: Shared Savings / Risk-Sharing Agreements Tied to Quality Metrics and Total Cost of Care\n\nPurpose\n- Establish a framework for aligning financial incentives between payor(s) and provider(s) to improve quality of care and reduce the total cost of care (TCOC) for a defined population, while protecting quality and access.\n\nKey Definitions\n- Total Cost of Care (TCOC): All allowed spending for the attributed patient population across care settings over a defined performance period.\n- Shared Savings: A model where providers who reduce TCOC below a benchmark receive a portion of the savings.\n- Risk-Sharing (Two-Sided Risk): Providers share in savings and also bear a portion of costs above the benchmark (losses).\n- Quality Adjustment Factor (QAF): A multiplier or offset based on performance on agreed quality metrics that modifies shared savings/losses.\n\nAgreement Structure Options\n- Upside-only (shared savings only): Provider earns portion of savings if TCOC < benchmark and quality thresholds met; no downside.\n- Two-sided risk: Provider receives savings but is also responsible for a portion of losses if TCOC > benchmark.\n- Corridor/Performance Threshold: A minimum savings/loss threshold (e.g., \u00b12\u20133%) before sharing applies to limit variance.\n- Cap and Floor: Limits on maximum shared savings or losses to control financial exposure.\n\nAttribution and Population\n- Attribution method: Prospective (assigned at start) or retrospective (based on claims during period). Clearly define inclusion/exclusion (e.g., Medicaid vs Medicare, dual eligibles).\n- Risk adjustment: Use an agreed model (e.g., CMS-HCC, clinical risk scores) to adjust benchmarks for case-mix and changes in population acuity.\n\nBenchmarking and Savings Calculation\n- Benchmark: Prior historical spending (rolling baseline), regional benchmark, or hybrid; adjust for trend and utilization changes.\n- Adjust for one-time events, coding intensity, and population shifts.\n- Calculation example:\n  - Expected cost (risk-adjusted benchmark) = B\n  - Actual cost for period = A\n  - Gross savings = max(0, B \u2212 A) or gross loss = max(0, A \u2212 B)\n  - Quality-adjusted shared savings = Gross savings \u00d7 Sharing rate \u00d7 Quality Adjustment Factor\n- Sharing rate: Negotiated percent (e.g., 50% of savings); different rates may apply across service lines.\n\nQuality Metrics and Performance\n- Select a balanced set of metrics tying financial outcomes to care quality, safety, patient experience, and preventative care. Categories:\n  - Clinical outcomes (readmissions, HbA1c control, blood pressure control)\n  - Utilization measures (ER visit rates, admissions for ambulatory-sensitive conditions)\n  - Patient experience (CAHPS scores)\n  - Preventive care and care coordination measures\n- Define measurement specifications, data sources, reporting cadence, thresholds for minimum acceptable performance, and how metric performance modifies shared savings (bonus/penalty or QAF).\n- Consider phased approach: start with process and utilization measures and add outcomes over time.\n\nData, Reporting, and Transparency\n- Regular reporting cadence (monthly/quarterly) with access to claims, encounter, and clinical data.\n- Standard data formats, KPIs dashboard, and audit rights for validation.\n- Dispute resolution process and reconciliation timeline (e.g., preliminary reports quarterly; final reconciliation annually).\n\nGovernance and Operations\n- Establish a joint governance committee (executive and clinical) to oversee performance, metric selection, corrective action plans, and appeals.\n- Care management, utilization review, and data-sharing protocols to support improvement.\n- Performance improvement plans for underperforming metrics with clear milestones.\n\nFinancial Flow and Reconciliation\n- Timing and method of payments/recoupment: periodic interim distributions vs annual reconciliation.\n- Withholds or performance reserves may be held to cover potential losses or quality shortfalls.\n- Tax and accounting treatment considerations.\n\nCompliance and Legal Protections\n- Address regulatory compliance (Stark Law, Anti-Kickback Statute, state laws), ensure arrangements meet safe-harbor requirements or are structured under value-based exceptions.\n- Patient protections: continuity of care, no reduction in access, clear communication about care management.\n- Data privacy and security: HIPAA-compliant data exchange and business associate agreements.\n\nRisk Mitigation and Contingencies\n- Stop-loss/maximum loss limits, reinsurance options for extreme variance.\n- Periodic re-baselining of benchmarks to avoid stale targets.\n- Mechanism for addressing major population changes (e.g., epidemics, facility closures).\n\nTermination and Transition\n- Define exit triggers (material breach, regulatory change), reconciliation procedures, final audit period, and responsibilities for open claims and patient transitions.\n\nImplementation Roadmap (high-level)\n1. Define population, attribution, and data feeds.\n2. Agree benchmarks, risk-adjustment method, sharing parameters, and quality metrics.\n3. Build reporting and reconciliation processes; governance structure.\n4. Pilot period with frequent reviews; refine metrics and calculations.\n5. Scale to full performance year, with annual re-evaluation.\n\nSample contractual language (short)\n- \u201cShared savings shall be determined annually by comparing the risk-adjusted benchmark to actual TCOC for the attributed population. Provider shall be entitled to X% of shared savings only if a Quality Adjustment Factor of at least Y% is achieved across the agreed metric set. In a two-sided model, provider shall be responsible for X% of any excess costs above the benchmark, subject to a loss cap of $Z per performance year and a corridor of \u00b12%.\u201d\n\nRisks and Considerations\n- Upcoding/coding intensity, data lags, and attribution disputes.\n- Provider financial strain under rapid downside exposure.\n- Need for robust care management infrastructure to achieve improvements.\n\nIf you want, I can:\n- Draft sample contract clauses tailored to a specific payer/provider type.\n- Propose a specific set of quality metrics and performance thresholds for your population.\n- Create an example calculation and reconciliation worksheet using numbers you provide.",
+    "Periodic reconciliation and true-up processes involve regularly comparing actual utilization or experience to actuarial benchmarks and making adjustments to reflect over- or underutilization. At scheduled intervals (monthly, quarterly, or annually), actuaries and finance teams reconcile utilization data, verifying data quality, applying credibility factors, and quantifying variances from expected costs or volumes. Material deviations trigger a true-up: financial adjustments to reserves, premiums, or vendor payments, accompanied by root-cause analysis to determine whether variance stems from data issues, temporary trends, or structural changes. Governance procedures define thresholds for automatic adjustments, approval workflows, stakeholder communications, and required documentation to ensure transparency and auditability. The process supports regulatory compliance, improves forecasting accuracy, and informs corrective actions such as benefit design changes, pricing updates, or utilization management initiatives to align future experience with actuarial expectations."
+  ],
+  "tables": []
+}
+[INFO] Wrote merged JSON to output.json

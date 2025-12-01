@@ -161,11 +161,11 @@
   parsing_strategy: "section"
 
 - chunk_data: |
-    Appendix : Covered Services – CPT/HCPCS Codes
+    Appendix : Covered Services - CPT/HCPCS Codes
   parsing_strategy: "table"
 
 - chunk_data: |
-    Appendix : Fee Schedule – Reimbursement Rates (USD)
+    Appendix : Fee Schedule - Reimbursement Rates (USD)
   parsing_strategy: "table"
 
 - chunk_data: |
