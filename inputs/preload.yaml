@@ -51,7 +51,7 @@
     Input:
 
 - chunk_data: |
-    In cases of overpayment, reserves the right to recover funds within 180 days from the date of payment.
+    In cases of overpayment, reserves the right to recover funds within days from the date of payment.
   prompt: |
     From the Input given below:
     Extract the over claim recovery SLA in days.
@@ -143,6 +143,14 @@
 - chunk_data: |
     Provider Participation Agreement
   parsing_strategy: "section"
+
+- chunk_data: |
+    SCOPE OF SERVICES
+  parsing_strategy: "ignore"
+
+- chunk_data: |
+    PROVIDER OBLIGATIONS
+  parsing_strategy: "ignore"
 
 - chunk_data: |
     COMPENSATION AND BILLING

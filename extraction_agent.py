@@ -1,13 +1,13 @@
 # Class ExtractionAgent
 # Function run_extraction_agent()
-# Take the model information (text-embedding-3-small + gpt-5-mini as defaults) and input file (docx) as input
+# Take the model information (nomic-embed-text + gpt-5-nano as defaults) and input file (docx) as input
 # Utilize the docx_reader to read the input file information
 # For each section, first look up the section header info as a chunk and figure out the strategy (paragraph vs section vs table)
 #if strategy is paragraph, then for each paragraph in the section, look up the paragraph text as a chunk
 #if strategy is section, then look up the entire section text as a chunk
 # mark the table as TODO for now
 # For each chunk, use the prompt template to generate the prompt
-# fire prompt and get the JSON response using the model (default is gpt-5-mini)
+# fire prompt and get the JSON response using the model (default is gpt-5-nano)
 # Add all the JSOn responses into a list
 # Finally use the utils.py to merge all the JSON fragments into a single JSON object
 # return that JSON output
@@ -25,7 +25,7 @@ import openai
 
 
 class ExtractionAgent:
-    def __init__(self, chroma_dir: str = "db", embedding_model: str = "text-embedding-3-small", llm_model: str = "gpt-5-mini"):
+    def __init__(self, chroma_dir: str = "db", embedding_model: str = "nomic-embed-text", llm_model: str = "gpt-5-nano"):
         self.handler = DBHandler(chroma_dir)
         self.embedding_model = embedding_model
         self.llm_model = llm_model
@@ -45,7 +45,7 @@ class ExtractionAgent:
         'paragraph'.
         """
         try:
-            hits = self.handler.query(section_title, self.embedding_model, top_k=1)
+            hits = self.handler.query(section_title, self.embedding_model, top_k=1, distance_threshold=0.1)
         except Exception:
             return "paragraph"
 
@@ -59,6 +59,8 @@ class ExtractionAgent:
             return "paragraph"
 
         sval = str(val).strip().lower()
+        if "ignore" in sval:
+            return "ignore"
         if "section" in sval:
             return "section"
         if "table" in sval:
@@ -81,7 +83,7 @@ class ExtractionAgent:
           prompt string.
         """
         try:
-            hits = self.handler.query(chunk_text, self.embedding_model, top_k=1)
+            hits = self.handler.query(chunk_text, self.embedding_model, top_k=1, distance_threshold=0.1)
         except Exception as e:
             raise RuntimeError(f"Failed to query DB for prompt template: {e}")
 
@@ -160,9 +162,10 @@ class ExtractionAgent:
             title = sec.get("title", "")
             strategy = self._determine_strategy(title)
             self.logger.info(f"Processing section '{title}' with strategy: {strategy}")
-
-            if not strategy:
-                strategy = "paragraph"
+            
+            if strategy == "ignore":
+                self.logger.info(f"Ignoring section '{title}' as per strategy.")
+                continue
             
             if strategy not in ["paragraph", "section", "table"]:
                 self.logger.warning(f"Unknown strategy '{strategy}' for section '{title}'.")
@@ -228,8 +231,8 @@ def main():
     parser = argparse.ArgumentParser(description="Run extraction agent on a DOCX file.")
     parser.add_argument("--docx", required=True, help="Path to the DOCX file to process.")
     parser.add_argument("--chroma-dir", default="db", help="Chroma DB directory to use.")
-    parser.add_argument("--embedding-model", default="text-embedding-3-small", help="Embedding model used for vector lookup.")
-    parser.add_argument("--llm-model", default="gpt-5-mini", help="LLM model used for extraction prompts.")
+    parser.add_argument("--embedding-model", default="nomic-embed-text", help="Embedding model used for vector lookup (default: nomic-embed-text for local Ollama).")
+    parser.add_argument("--llm-model", default="gpt-5-nano", help="LLM model used for extraction prompts.")
     parser.add_argument("--output", help="Path to write the merged JSON output (overwrites if exists). If omitted, output is printed only.")
     parser.add_argument("--log-level", default="INFO", help="Logging level (DEBUG, INFO, WARNING, ERROR). Default: INFO")
 
@@ -244,6 +247,8 @@ def main():
     _logging.basicConfig(level=lvl, format='%(asctime)s %(levelname)s %(name)s: %(message)s')
 
     agent = ExtractionAgent(chroma_dir=args.chroma_dir, embedding_model=args.embedding_model, llm_model=args.llm_model)
+    if args.embedding_model != "nomic-embed-text":
+        print(f"[INFO] Using embedding model: {args.embedding_model}")
     output = agent.run_extraction_agent(args.docx)
     print("\n=== Merged JSON Output ===")
     print(output)

@@ -59,8 +59,8 @@ def ingest_yaml(file_path: str, model: str, db_handle: DBHandler):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Preload chunks and prompts into Chroma DB with embeddings.")
     parser.add_argument("--file", default="inputs/preload.yaml", help="Path to YAML file with chunk/prompt pairs.")
-    parser.add_argument("--model", default="text-embedding-3-small", help="Which OpenAI embedding model to use.")
-    parser.add_argument("--dry-run", action="store_true", help="Do not call OpenAI; store documents without embeddings (for testing).")
+    parser.add_argument("--model", default="nomic-embed-text", help="Which embedding model to use (default: nomic-embed-text for local Ollama; use text-embedding-3-small for OpenAI).")
+    parser.add_argument("--dry-run", action="store_true", help="Do not call embedding service; store documents without embeddings (for testing).")
     parser.add_argument("--chroma-dir", default="db", help="Local directory for Chroma persistent storage (duckdb+parquet).")
     parser.add_argument("--list-entries", action="store_true", help="List all entries stored in the Chroma DB and exit.")
     parser.add_argument("--query", help="Run a vector query against the Chroma collection for the given model. Provide the query string.")
@@ -68,29 +68,31 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print(f"Starting preload for {args.file} and {args.model}")
+    print(f"Starting preload for {args.file} using embedding model: {args.model}")
+    if args.model != "nomic-embed-text":
+        print("[INFO] Using non-default embedding model. Ensure appropriate API keys are set.")
 
     # Initialize DB handler (manages Chroma client)
     handler = DBHandler(args.chroma_dir)
 
-    # If dry-run is requested, temporarily replace handler.generate_embedding
+    # If dry-run is requested, temporarily replace handler.embedding_handler.generate_embedding
     # so store_chunk will add documents without embeddings.
     if args.dry_run:
-        original_generate = handler.generate_embedding
-        handler.generate_embedding = lambda model, text: None
+        original_generate = handler.embedding_handler.generate_embedding
+        handler.embedding_handler.generate_embedding = lambda text, model=None: None
 
     # If user only wants to list entries, do that and exit
     if args.list_entries:
         handler.list_entries()
         # restore generate embedding if needed and exit
         if args.dry_run:
-            handler.generate_embedding = original_generate
+            handler.embedding_handler.generate_embedding = original_generate
         sys.exit(0)
 
     # If user provided a --query string, run the query and print results
     if args.query:
         try:
-            hits = handler.query(args.query, args.model, top_k=args.top_k)
+            hits = handler.query(args.query, args.model, top_k=args.top_k, distance_threshold=0.1)
         except Exception as e:
             print(f"[ERROR] Query failed: {e}")
             if args.dry_run:
@@ -116,17 +118,18 @@ if __name__ == "__main__":
 
         # restore generate embedding and exit
         if args.dry_run:
-            handler.generate_embedding = original_generate
+            handler.embedding_handler.generate_embedding = original_generate
         sys.exit(0)
 
     ingest_yaml(args.file, args.model, handler)
 
     if args.dry_run:
         # restore original
-        handler.generate_embedding = original_generate
+        handler.embedding_handler.generate_embedding = original_generate
     # Try to persist the Chroma client if available (some clients support persist())
     try:
         if handler is not None and handler.persist():
-            print(f"[INFO] Chroma persisted to {args.chroma_dir}")
+            print(f"[INFO] Chroma embeddings persisted to {args.chroma_dir}")
     except Exception as e:
         print(f"[WARN] Failed to persist Chroma client: {e}")
+    print("[INFO] Using local Ollama embeddings (nomic-embed-text) - no API costs!")

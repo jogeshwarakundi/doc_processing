@@ -7,6 +7,10 @@ venv/
 #ignore chroma db files
 db/
 
+#ignore random backup files
+db_back/
+old/
+
 #standard MAC files
 .DS_Store
 .idea/
@@ -19,3 +23,6 @@ db/
 *.aux
 *.out
 *.toc
+log.txt
+output.json
+

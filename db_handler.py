@@ -1,8 +1,8 @@
 import hashlib
 import sys
-import openai
 import chromadb
 import logging
+from embedding_handler import EmbeddingHandler
 
 try:
     from chromadb.config import Settings
@@ -11,14 +11,15 @@ except Exception:
 
 
 class DBHandler:
-    """Encapsulate Chroma client and embedding/storage helpers."""
+    """Encapsulate Chroma client and storage helpers."""
 
-    def __init__(self, persist_directory: str = "db"):
+    def __init__(self, persist_directory: str = "db", embedding_model: str = "nomic-embed-text"):
         # instance logger
         self.logger = logging.getLogger(self.__class__.__name__)
         if not self.logger.handlers:
             self.logger.setLevel(logging.INFO)
 
+        self.embedding_handler = EmbeddingHandler(embedding_model)
         self.client = None
         # Try a few initialization strategies to support multiple chromadb versions
         try:
@@ -49,12 +50,8 @@ class DBHandler:
         return hashlib.sha256(chunk_data.encode("utf-8")).hexdigest()
 
     def generate_embedding(self, model: str, text: str):
-        try:
-            response = openai.embeddings.create(model=model, input=text)
-            return response.data[0].embedding
-        except Exception as e:
-            self.logger.error(f"Failed to generate embedding for chunk: {e}")
-            raise
+        """Delegate embedding generation to EmbeddingHandler."""
+        return self.embedding_handler.generate_embedding(text, model=model)
 
     @staticmethod
     def _sanitize_collection_name(model: str) -> str:
@@ -154,12 +151,28 @@ class DBHandler:
             pass
         return False
 
-    def query(self, query_text: str, model: str, top_k: int = 5):
+    def query(self, query_text: str, model: str, top_k: int = 5, distance_threshold: float = 0.1):
         """Run a vector search for `query_text` against the Chroma collection for `model`.
 
         This implementation assumes the documented API: get the collection by name
         and call `collection.query(query_embeddings=[embedding], n_results=top_k)`.
-        Returns a list of hits with keys: collection, id, document, metadata, distance (if available).
+        
+        Returns a list of hits filtered by both top_k and distance_threshold.
+        Results are returned in order of increasing distance (closest first).
+        A result is included only if:
+        1. Its distance is <= distance_threshold (lower distance = higher similarity)
+        2. It is within the top_k results
+        
+        Args:
+            query_text: The text to search for.
+            model: The embedding model to use.
+            top_k: Maximum number of results to retrieve from Chroma (default: 5).
+            distance_threshold: Maximum allowed distance (default: 0.1). Results with
+                              distance > threshold are discarded.
+        
+        Returns:
+            A list of hits with keys: collection, id, document, metadata, distance, embedding.
+            Only includes hits where distance <= distance_threshold.
         """
         if self.client is None:
             raise RuntimeError("Chroma client is not initialized")
@@ -190,17 +203,32 @@ class DBHandler:
         embeddings = all_embeddings[0] if all_embeddings else []
 
         for i, doc_id in enumerate(ids):
-            hit = {
-                'collection': collection_name,
-                'id': doc_id,
-                'document': docs[i] if i < len(docs) else None,
-                'metadata': metadatas[i] if i < len(metadatas) else {},
-                'distance': distances[i] if i < len(distances) else None,
-                'embedding': embeddings[i] if i < len(embeddings) else None,
-            }
-            hits.append(hit)
+            # Get the distance for this result
+            distance = distances[i] if i < len(distances) else float('inf')
+            
+            # Filter by distance threshold: only include if distance <= threshold
+            if distance <= distance_threshold:
+                hit = {
+                    'collection': collection_name,
+                    'id': doc_id,
+                    'document': docs[i] if i < len(docs) else None,
+                    'metadata': metadatas[i] if i < len(metadatas) else {},
+                    'distance': distance,
+                    'embedding': embeddings[i] if i < len(embeddings) else None,
+                }
+                hits.append(hit)
+            else:
+                # Log when first entry is skipped due to distance threshold
+                if i == 0:
+                    doc_snippet = (docs[i][:100] + '...') if i < len(docs) and docs[i] and len(docs[i]) > 100 else (docs[i] if i < len(docs) else 'N/A')
+                    metadata = metadatas[i] if i < len(metadatas) else {}
+                    try:
+                        self.logger.info(f"Skipping entry: distance={distance}, threshold={distance_threshold}, metadata={metadata}, document={doc_snippet}")
+                    except Exception:
+                        pass
+        
         try:
-            self.logger.info(f"Returning {len(hits)} hits from query.")
+            self.logger.info(f"Returning {len(hits)} hits from query (distance_threshold={distance_threshold}, top_k={top_k}).")
         except Exception:
             pass
 
